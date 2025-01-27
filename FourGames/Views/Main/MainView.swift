@@ -119,13 +119,8 @@ extension MainView{
     
     // Logo
     private var logo: some View {
-        ZStack{
-            Image(colorScheme == .dark ? "mainLogoWhite" : "mainLogoBlack")
-                .resizable()
-                .scaledToFit()
-                .frame(width: mainVm.adjustLogoWidth())
-                .scaleEffect(mainVm.isLogoAnimating ? 1.15 : 1)
-        }
+        LogoView(logoName: "main", size: mainVm.adjustLogoWidth())
+            .scaleEffect(mainVm.isLogoAnimating ? 1.15 : 1)
     }
     
     // Buttons

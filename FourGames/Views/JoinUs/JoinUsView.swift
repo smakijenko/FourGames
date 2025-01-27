@@ -13,7 +13,7 @@ struct JoinUsView: View {
     @Binding var isGameOn: Bool
     var body: some View {
         VStack(spacing: 20) {
-            logo
+            LogoView(logoName: "joinUs", size: joinVm.adjustLogoWidth())
                 .padding(.bottom, 40)
             LogWithGoogleButtonView(isGameOn: $isGameOn)
             LogWithEmailButtonView(isGameOn: $isGameOn)
@@ -25,13 +25,4 @@ struct JoinUsView: View {
 
 #Preview {
     JoinUsView(isGameOn: .constant(true))
-}
-
-extension JoinUsView {
-    private var logo: some View{
-        Image(colorScheme == .dark ? "joinUsLogoWhite" : "joinUsLogoBlack")
-            .resizable()
-            .scaledToFit()
-            .frame(width: joinVm.adjustLogoWidth())
-    }
 }

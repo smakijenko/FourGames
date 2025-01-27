@@ -61,6 +61,7 @@
 		32CFFF302D482AF400DC586E /* AuthUserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFFF2F2D482AF400DC586E /* AuthUserDataModel.swift */; };
 		32CFFF322D482B0A00DC586E /* UserScoresDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFFF312D482B0A00DC586E /* UserScoresDataModel.swift */; };
 		32CFFF342D482B2500DC586E /* AuthProviderOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFFF332D482B2500DC586E /* AuthProviderOption.swift */; };
+		32CFFF372D4846AF00DC586E /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFFF362D4846AF00DC586E /* LogoView.swift */; };
 		32DA7FBC2D3B0657007D75C7 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DA7FBB2D3B0657007D75C7 /* UserProfileView.swift */; };
 		32DA7FBE2D3B067C007D75C7 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DA7FBD2D3B067C007D75C7 /* UserProfileViewModel.swift */; };
 		32DDB2122D2563F300DA2B4C /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDB2112D2563F000DA2B4C /* Line.swift */; };
@@ -114,6 +115,7 @@
 		32CFFF2F2D482AF400DC586E /* AuthUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserDataModel.swift; sourceTree = "<group>"; };
 		32CFFF312D482B0A00DC586E /* UserScoresDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScoresDataModel.swift; sourceTree = "<group>"; };
 		32CFFF332D482B2500DC586E /* AuthProviderOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProviderOption.swift; sourceTree = "<group>"; };
+		32CFFF362D4846AF00DC586E /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		32DA7FBB2D3B0657007D75C7 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		32DA7FBD2D3B067C007D75C7 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		32DDB2112D2563F000DA2B4C /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		323278B52CE8110400833964 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				32CFFF352D48468100DC586E /* Widgets */,
 				32E11F042D42EEE100F76F5F /* Main */,
 				323278C12CEBFA4100833964 /* Run Game */,
 				328B05882D03B61F00E5A9EA /* Words Search */,
@@ -344,6 +347,14 @@
 			path = Leaderboard;
 			sourceTree = "<group>";
 		};
+		32CFFF352D48468100DC586E /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				32CFFF362D4846AF00DC586E /* LogoView.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		32E11F042D42EEE100F76F5F /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +482,7 @@
 				32DDB2142D27C79D00DA2B4C /* Hearts.swift in Sources */,
 				32CFFF302D482AF400DC586E /* AuthUserDataModel.swift in Sources */,
 				323278B72CE8339100833964 /* WordsView.swift in Sources */,
+				32CFFF372D4846AF00DC586E /* LogoView.swift in Sources */,
 				322FDCEC2D18BB4100DE13EE /* Maze.swift in Sources */,
 				3281B4F62D2F1B2C008A634E /* SignInGoogleHelper.swift in Sources */,
 				323278BB2CE833A900833964 /* TowerView.swift in Sources */,

@@ -27,7 +27,7 @@ struct WordsView: View {
                     .transition(.asymmetric(insertion: .move(edge: .leading), removal: .opacity))
             }
             VStack {
-                logo
+                LogoView(logoName: "wordSearch", size: wordsVm.adjustLogoSize().width)
                 Spacer()
             }
         }
@@ -39,12 +39,6 @@ struct WordsView: View {
 }
 
 extension WordsView {
-    private var logo: some View{
-        Image(colorScheme == .dark ? "wordSearchLogoWhite" : "wordSearchLogoBlack")
-            .resizable()
-            .frame(width: wordsVm.adjustLogoSize().width, height: wordsVm.adjustLogoSize().height)
-    }
-    
     private var timer: some View {
         Text(String(format: "%.1f", wordsVm.elapsedTime))
             .font(.title)

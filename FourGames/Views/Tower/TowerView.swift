@@ -17,7 +17,7 @@ struct TowerView: View {
             SpriteView(scene: towerVm.createScene(isDarkMode: colorScheme == .dark))
                 .ignoresSafeArea()
             VStack{
-                logo
+                LogoView(logoName: "towerBuild", size: towerVm.adjustLogoWidth())
                 Spacer()
             }
         }
@@ -26,13 +26,4 @@ struct TowerView: View {
 
 #Preview {
     TowerView()
-}
-
-extension TowerView{
-    private var logo: some View{
-        Image(colorScheme == .dark ? "towerBuildLogoWhite" : "towerBuildLogoBlack")
-            .resizable()
-            .scaledToFit()
-            .frame(width: towerVm.adjustLogoWidth())
-    }
 }

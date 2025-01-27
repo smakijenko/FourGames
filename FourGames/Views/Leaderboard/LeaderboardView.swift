@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct LeaderboardView: View {
+    @StateObject private var leaderVm = LeaderboardViewModel()
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            LogoView(logoName: "leaderboard", size: leaderVm.adjustLogoWidth())
+            Spacer()
+        }
     }
 }
 
 #Preview {
     LeaderboardView()
+}
+
+extension LeaderboardView {
+
 }

@@ -34,7 +34,7 @@ struct MazeView: View {
                     .transition(.asymmetric(insertion: .move(edge: .leading), removal: .opacity))
             }
             VStack {
-                logo
+                LogoView(logoName: "maze", size: mazeVm.adjustLogoSize().width)
                 Spacer()
             }
         }
@@ -46,12 +46,6 @@ struct MazeView: View {
 }
 
 extension MazeView {
-    private var logo: some View{
-        Image(colorScheme == .dark ? "mazeLogoWhite" : "mazeLogoBlack")
-            .resizable()
-            .frame(width: mazeVm.adjustLogoSize().width, height: mazeVm.adjustLogoSize().height)
-    }
-    
     private var timer: some View {
         Text(String(format: "%.1f", mazeVm.elapsedTime))
             .font(.title)

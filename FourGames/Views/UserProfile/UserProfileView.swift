@@ -14,7 +14,7 @@ struct UserProfileView: View {
     @Binding var isGameOn: Bool
     var body: some View {
         VStack(spacing: 20) {
-            logo
+            LogoView(logoName: "profile", size: profileVm.adjustLogoWidth())
             HStack(alignment: .top, spacing: 20) {
                 userIcon
                 VStack(spacing: 12) {
@@ -58,15 +58,6 @@ struct UserProfileView: View {
 }
 
 extension UserProfileView {
-    private var logo: some View {
-        VStack {
-            Image(colorScheme == .dark ? "profileLogoWhite" : "profileLogoBlack")
-                .resizable()
-                .scaledToFit()
-                .frame(width: profileVm.adjustLogoWidth())
-        }
-    }
-    
     private var userIcon: some View {
         VStack {
             AsyncImage(url: URL(string: profileVm.authUser?.photoUrl ?? "")) { Image in

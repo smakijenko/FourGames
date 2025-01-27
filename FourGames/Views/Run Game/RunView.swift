@@ -17,7 +17,7 @@ struct RunView: View {
             SpriteView(scene: runVm.createScene(isDarkMode: colorScheme == .dark))
                 .ignoresSafeArea()
             VStack{
-                logo
+                LogoView(logoName: "kangRun", size: runVm.adjustLogoWidth())
                 Spacer()
             }
         }
@@ -26,13 +26,4 @@ struct RunView: View {
 
 #Preview {
     RunView()
-}
-
-extension RunView{
-    private var logo: some View{
-        Image(colorScheme == .dark ? "kangRunLogoWhite" : "kangRunLogoBlack")
-            .resizable()
-            .scaledToFit()
-            .frame(width: runVm.adjustLogoWidth())
-    }
 }
