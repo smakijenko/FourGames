@@ -83,13 +83,13 @@ extension MainView{
                     Image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 70, height: 70)
+                        .frame(width: 60, height: 60)
                         .clipShape(Circle())
                 } placeholder: {
                     Image("defaultUserIcon")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 70)
+                        .frame(width: 60)
                         .opacity(mainVm.iconsAnimating ? 0.75 : 1)
                 }
                 
@@ -106,11 +106,11 @@ extension MainView{
                 ZStack {
                     Circle()
                         .foregroundStyle(.lightGray)
-                        .frame(width: 70)
+                        .frame(width: 60)
                     Image("leaderboardsIconWhite")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 60)
+                        .frame(width: 55)
                 }
                 .opacity(mainVm.iconsAnimating ? 0.75 : 1)
             }
@@ -130,6 +130,7 @@ extension MainView{
                 HStack {
                     ForEach(row, id: \.self) { view in
                         gameSquare(size: mainVm.adjustButtonSize(), view: view)
+                            .opacity(mainVm.iconsAnimating ? 0.75 : 1)
                     }
                 }
             }
