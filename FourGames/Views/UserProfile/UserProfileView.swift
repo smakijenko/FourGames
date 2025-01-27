@@ -9,23 +9,9 @@ import SwiftUI
 import Charts
 
 struct UserProfileView: View {
-    
-    struct UserScores: Identifiable {
-        let uId: String
-        let kangarooScore: Int
-        let wordsScore: Double
-        let mazesScore: Double
-        let towersScore: Int
-        var id: String {
-            uId
-        }
-    }
-    
     @StateObject private var profileVm = UserProfileViewModel()
     @Environment(\.colorScheme) var colorScheme
     @Binding var isGameOn: Bool
-    let playerStats = UserScores(uId: "1", kangarooScore: 117, wordsScore: 60.2, mazesScore: 25.2, towersScore: 31)
-    let bestScores = UserScores(uId: "2", kangarooScore: 134, wordsScore: 47.1, mazesScore: 20.7, towersScore: 31)
     var body: some View {
         VStack(spacing: 20) {
             logo
