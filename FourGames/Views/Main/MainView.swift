@@ -126,7 +126,7 @@ extension MainView{
                     .resizable()
                     .frame(width: size, height: size)
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(colorScheme == .dark ? .white : .black, lineWidth: 6)
+                    .stroke(colorScheme == .dark ? .white : .black, lineWidth: 5)
                     .frame(width: size, height: size)
             }
             .padding(1)
