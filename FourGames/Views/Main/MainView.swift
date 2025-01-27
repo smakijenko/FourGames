@@ -15,6 +15,7 @@ struct MainView: View {
         NavigationStack{
             VStack(spacing: 55) {
                 HStack{
+                    leaderboardsIcon
                     Spacer()
                     userIcon
                 }
@@ -37,12 +38,22 @@ struct MainView: View {
                     JoinUsView(isGameOn: $mainVm.isGameOn)
                 case .userProfile:
                     UserProfileView(isGameOn: $mainVm.isGameOn)
+                case .leaderboard:
+                    LeaderboardView()
                 default:
                     MainView()
                 }
             }
         }
         .tint(.primary)
+        .onAppear {
+            mainVm.isGameOn = false
+            mainVm.viewType = .noGame
+            withAnimation(.linear(duration: 0.75).repeatForever()){
+                mainVm.isLogoAnimating = true
+                mainVm.iconsAnimating = true
+            }
+        }
     }
 }
 
@@ -52,7 +63,7 @@ struct MainView: View {
 
 extension MainView{
     
-    // User image
+    // User profile icon
     private var userIcon: some View {
         ZStack {
             Button {
@@ -72,14 +83,36 @@ extension MainView{
                     Image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 60, height: 60)
+                        .frame(width: 70, height: 70)
                         .clipShape(Circle())
                 } placeholder: {
                     Image("defaultUserIcon")
                         .resizable()
                         .scaledToFit()
+                        .frame(width: 70)
+                        .opacity(mainVm.iconsAnimating ? 0.75 : 1)
+                }
+                
+            }
+        }
+    }
+    // Leaderboards icon
+    private var leaderboardsIcon: some View {
+        ZStack {
+            Button {
+                mainVm.isGameOn.toggle()
+                mainVm.viewType = .leaderboard
+            } label: {
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.lightGray)
+                        .frame(width: 70)
+                    Image("leaderboardsIconWhite")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 60)
                 }
+                .opacity(mainVm.iconsAnimating ? 0.75 : 1)
             }
         }
     }
@@ -92,13 +125,6 @@ extension MainView{
                 .scaledToFit()
                 .frame(width: mainVm.adjustLogoWidth())
                 .scaleEffect(mainVm.isLogoAnimating ? 1.15 : 1)
-        }
-        .onAppear {
-            mainVm.isGameOn = false
-            mainVm.viewType = .noGame
-            withAnimation(.linear(duration: 0.75).repeatForever()){
-                mainVm.isLogoAnimating = true
-            }
         }
     }
     

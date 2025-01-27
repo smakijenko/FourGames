@@ -9,7 +9,7 @@ import Foundation
 
 class UserProfileViewModel: ObservableObject {
     @Published var authUser: AuthUserData?
-    @Published var authProvider: AuthProviderOption = .email
+    @Published var authProvider: AuthProviderOption = .google
     @Published var authUserScores: UserScoresData?
     @Published var bestScores: UserScoresData?
     @Published var chartsOn: Bool = false

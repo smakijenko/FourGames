@@ -81,7 +81,7 @@ extension UserProfileView {
                     .scaledToFit()
                     .frame(width: 120)
             }
-            Text(profileVm.authUser?.name ?? "Jan Kowalski")
+            Text(profileVm.authUser?.name ?? "")
                 .font(.caption)
                 .fontWeight(.medium)
                 .foregroundStyle(colorScheme == .dark ? .white : .black)

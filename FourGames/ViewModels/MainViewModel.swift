@@ -18,10 +18,11 @@ class MainViewModel: ObservableObject {
         }
     }
     @Published var isLogoAnimating: Bool = false
+    @Published var iconsAnimating: Bool = false
     @Published var authUser: AuthUserData?
     
     enum ViewType: String, Identifiable {
-        case run, words, labyrinth, tower, joinUs, userProfile, noGame
+        case run, words, labyrinth, tower, joinUs, userProfile, leaderboard, noGame
         var id: String { rawValue }
     }
     

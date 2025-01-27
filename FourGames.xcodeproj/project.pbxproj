@@ -56,6 +56,8 @@
 		32A1DA692D38E0CC0099AE53 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 32A1DA682D38E0CC0099AE53 /* FirebaseStorage */; };
 		32A1DA6B2D38E0CC0099AE53 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 32A1DA6A2D38E0CC0099AE53 /* FirebaseStorageCombine-Community */; };
 		32B55D9D2CFD922C00F84545 /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B55D9C2CFD922C00F84545 /* GameButton.swift */; };
+		32CFFF2C2D4826EE00DC586E /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFFF2B2D4826EE00DC586E /* LeaderboardView.swift */; };
+		32CFFF2E2D48270100DC586E /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFFF2D2D48270100DC586E /* LeaderboardViewModel.swift */; };
 		32DA7FBC2D3B0657007D75C7 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DA7FBB2D3B0657007D75C7 /* UserProfileView.swift */; };
 		32DA7FBE2D3B067C007D75C7 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DA7FBD2D3B067C007D75C7 /* UserProfileViewModel.swift */; };
 		32DDB2122D2563F300DA2B4C /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDB2112D2563F000DA2B4C /* Line.swift */; };
@@ -104,6 +106,8 @@
 		328B058E2D05EDCB00E5A9EA /* WordsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsData.swift; sourceTree = "<group>"; };
 		328B05912D063DDD00E5A9EA /* WordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewModel.swift; sourceTree = "<group>"; };
 		32B55D9C2CFD922C00F84545 /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
+		32CFFF2B2D4826EE00DC586E /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		32CFFF2D2D48270100DC586E /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
 		32DA7FBB2D3B0657007D75C7 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		32DA7FBD2D3B067C007D75C7 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		32DDB2112D2563F000DA2B4C /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				328B05942D06472800E5A9EA /* Tower */,
 				32270D9F2D3703520034FFFA /* JoinUs */,
 				32A1DA6C2D3AD1A50099AE53 /* UserProfile */,
+				32CFFF2A2D4826B300DC586E /* Leaderboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				325D8FE72D1F766C00347971 /* TowerViewModel.swift */,
 				3285402B2D3303DD005A00C8 /* JoinUsViewModel.swift */,
 				32DA7FBD2D3B067C007D75C7 /* UserProfileViewModel.swift */,
+				32CFFF2D2D48270100DC586E /* LeaderboardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -319,6 +325,14 @@
 				325E188F2D47ABA700BA3612 /* TimeChartView.swift */,
 			);
 			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		32CFFF2A2D4826B300DC586E /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				32CFFF2B2D4826EE00DC586E /* LeaderboardView.swift */,
+			);
+			path = Leaderboard;
 			sourceTree = "<group>";
 		};
 		32E11F042D42EEE100F76F5F /* Main */ = {
@@ -423,6 +437,7 @@
 				3277F42D2D021E7E0090B251 /* UndergroundIcons.swift in Sources */,
 				328B058D2D05ED3400E5A9EA /* Words.swift in Sources */,
 				32DA7FBC2D3B0657007D75C7 /* UserProfileView.swift in Sources */,
+				32CFFF2E2D48270100DC586E /* LeaderboardViewModel.swift in Sources */,
 				323278C92CEE999900833964 /* Kangaroo.swift in Sources */,
 				323278B12CE810F300833964 /* MainView.swift in Sources */,
 				3286F2D92CFE42C2008068E2 /* ScoreLabel.swift in Sources */,
@@ -453,6 +468,7 @@
 				32DA7FBE2D3B067C007D75C7 /* UserProfileViewModel.swift in Sources */,
 				323278CB2CF63AC900833964 /* Obstacles.swift in Sources */,
 				325D8FEC2D21A62E00347971 /* TowerGround.swift in Sources */,
+				32CFFF2C2D4826EE00DC586E /* LeaderboardView.swift in Sources */,
 				325E18902D47ABA700BA3612 /* TimeChartView.swift in Sources */,
 				32270D9E2D36E05A0034FFFA /* LogWithEmailButtonView.swift in Sources */,
 				322FDCF02D18BBC100DE13EE /* MazeViewModel.swift in Sources */,

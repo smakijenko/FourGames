@@ -44,7 +44,7 @@ extension LogWithGoogleButtonView {
             }
         } label: {
             HStack {
-                Image(colorScheme == .dark ? "googleLogoWhite" : "googleLogoBlack")
+                Image(colorScheme == .dark ? "googleIconWhite" : "googleIconBlack")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 25)
