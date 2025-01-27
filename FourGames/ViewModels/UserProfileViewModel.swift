@@ -8,10 +8,10 @@
 import Foundation
 
 class UserProfileViewModel: ObservableObject {
-    @Published var authUser: AuthUserData?
+    @Published var authUser: AuthUserDataModel?
     @Published var authProvider: AuthProviderOption = .google
-    @Published var authUserScores: UserScoresData?
-    @Published var bestScores: UserScoresData?
+    @Published var authUserScores: UserScoresDataModel?
+    @Published var bestScores: UserScoresDataModel?
     @Published var chartsOn: Bool = false
     let chartWidth: CGFloat = 50
     
@@ -22,7 +22,7 @@ class UserProfileViewModel: ObservableObject {
     }
     
     func loadAuthUser() async throws {
-        var user: AuthUserData?
+        var user: AuthUserDataModel?
         do {
             let uId = try AuthManager.shared.getAuthenticatedUser().uid
             user = try await AuthManager.shared.getAuthUserDataFromDB(uId: uId)
@@ -38,8 +38,8 @@ class UserProfileViewModel: ObservableObject {
     }
     
     func loadScores() async throws {
-        var userScores: UserScoresData?
-        var bestScores: UserScoresData?
+        var userScores: UserScoresDataModel?
+        var bestScores: UserScoresDataModel?
         do {
             let uId = try AuthManager.shared.getAuthenticatedUser().uid
             userScores = try await AuthManager.shared.fetchUserScore(uId: uId)

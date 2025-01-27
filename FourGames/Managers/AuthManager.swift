@@ -11,41 +11,6 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
-struct AuthUserData {
-    let uid: String
-    let email: String
-    let name: String
-    let photoUrl: String
-
-    init(uid: String, email: String, photoUrl: String, name: String) {
-        self.uid = uid
-        self.email = email
-        self.photoUrl = photoUrl
-        self.name = name
-    }
-}
-
-struct UserScoresData {
-    let uid: String
-    let runScore: Int
-    let wordsScore: Double
-    let mazeScore: Double
-    let towerScore: Int
-
-    init(uid: String, runScore: Int, wordsScore: Double, mazeScore: Double, towerScore: Int) {
-        self.uid = uid
-        self.runScore = towerScore
-        self.wordsScore = wordsScore
-        self.mazeScore = mazeScore
-        self.towerScore = towerScore
-    }
-}
-
-enum AuthProviderOption: String {
-    case google = "google.com"
-    case email = "password"
-}
-
 class AuthManager {
     static let shared = AuthManager()
     private init() { }
@@ -67,12 +32,12 @@ class AuthManager {
         return providers
     }
     
-    func getAuthenticatedUser() throws -> AuthUserData {
+    func getAuthenticatedUser() throws -> AuthUserDataModel {
         guard let user = Auth.auth().currentUser else {
             print("\(MyError.noAuthUser.localizedDescription)")
             throw MyError.noAuthUser
         }
-        return AuthUserData (
+        return AuthUserDataModel (
             uid: user.uid,
             email: user.email ?? "",
             photoUrl: user.photoURL?.absoluteString ?? "",
@@ -80,7 +45,7 @@ class AuthManager {
         )
     }
     
-    func getAuthUserDataFromDB(uId: String) async throws -> AuthUserData {
+    func getAuthUserDataFromDB(uId: String) async throws -> AuthUserDataModel {
         let db = Firestore.firestore()
         let documentRef = db.collection("users").document(uId)
         let document = try await documentRef.getDocument()
@@ -88,7 +53,7 @@ class AuthManager {
             print("\(MyError.unableFetchUserData.localizedDescription)")
             throw MyError.unableFetchUserData
         }
-        return AuthUserData (
+        return AuthUserDataModel (
             uid: data["uId"] as! String,
             email: data["email"] as! String,
             photoUrl: data["photoUrl"] as! String,
@@ -104,7 +69,7 @@ extension AuthManager {
             let tokens = try await helper.signIn()
             let credential = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)
             let authDataResult = try await Auth.auth().signIn(with: credential)
-            let user = AuthUserData (
+            let user = AuthUserDataModel (
                 uid: authDataResult.user.uid,
                 email: authDataResult.user.email ?? "",
                 photoUrl: authDataResult.user.photoURL?.absoluteString ?? "",
@@ -235,7 +200,7 @@ extension AuthManager {
 
 // User profile methods
 extension AuthManager {
-    func fetchUserScore(uId: String) async throws -> UserScoresData {
+    func fetchUserScore(uId: String) async throws -> UserScoresDataModel {
         let db = Firestore.firestore()
         let documentRef = db.collection("scores").document(uId)
         let document = try await documentRef.getDocument()
@@ -243,7 +208,7 @@ extension AuthManager {
             print("\(MyError.unableFetchUserScore.localizedDescription)")
             throw MyError.unableFetchUserScore
         }
-        return UserScoresData (
+        return UserScoresDataModel (
             uid: data["uId"] as! String,
             runScore: data["runScore"] as! Int,
             wordsScore: data["wordsScore"] as! Double,
@@ -252,7 +217,7 @@ extension AuthManager {
         )
     }
     
-    func fetchBestScore() async throws -> UserScoresData {
+    func fetchBestScore() async throws -> UserScoresDataModel {
         var bestScores: [String: Any] = [
             "runScore": 0,
             "wordsScore": 1420.0,
@@ -290,7 +255,7 @@ extension AuthManager {
             throw MyError.unableFetchBestScore
         }
         print(bestScores)
-        return UserScoresData(
+        return UserScoresDataModel (
             uid: "",
             runScore: bestScores["runScore"] as! Int,
             wordsScore: bestScores["wordsScore"] as! Double,

@@ -19,7 +19,7 @@ class MainViewModel: ObservableObject {
     }
     @Published var isLogoAnimating: Bool = false
     @Published var iconsAnimating: Bool = false
-    @Published var authUser: AuthUserData?
+    @Published var authUser: AuthUserDataModel?
     
     enum ViewType: String, Identifiable {
         case run, words, labyrinth, tower, joinUs, userProfile, leaderboard, noGame
@@ -42,7 +42,7 @@ class MainViewModel: ObservableObject {
     }
     
     func loadAuthUser() async throws {
-        var user: AuthUserData?
+        var user: AuthUserDataModel?
         do {
             let uId = try AuthManager.shared.getAuthenticatedUser().uid
             user = try await AuthManager.shared.getAuthUserDataFromDB(uId: uId)

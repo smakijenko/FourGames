@@ -1,5 +1,5 @@
 //
-//  WordsDataService.swift
+//  Word.swift
 //  FourGames
 //
 //  Created by Stanisław Makijenko on 08/12/2024.
