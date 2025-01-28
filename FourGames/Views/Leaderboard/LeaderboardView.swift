@@ -14,6 +14,7 @@ struct LeaderboardView: View {
         VStack {
             LogoView(logoName: "leaderboard", size: leaderVm.adjustLogoWidth())
             Spacer()
+            TabMenuView()
         }
         .environmentObject(leaderVm)
     }

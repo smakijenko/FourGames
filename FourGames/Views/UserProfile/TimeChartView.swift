@@ -21,7 +21,7 @@ struct TimeChartView: View {
         ZStack {
             VStack {
                 bar()
-                gameIcon(gameName: gameType)
+                GameIconView(gameType: gameType, size: profileVm.chartWidth, strokeWidth: 2, radius: 7)
             }
             labels()
         }
@@ -41,16 +41,6 @@ struct TimeChartView: View {
 }
 
 extension TimeChartView {
-    private func gameIcon(gameName: String) -> some View {
-        return ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(colorScheme == .dark ? .white : .black, lineWidth: 2)
-            Image(colorScheme == .dark ? "\(gameName)ButtonIconWhite" : "\(gameName)ButtonIconBlack")
-                .resizable()
-        }
-        .frame(width: profileVm.chartWidth, height: profileVm.chartWidth)
-    }
-    
     private func scoreLabel(score: String, label: String) -> some View {
         return VStack(spacing: 1) {
             Text(label)

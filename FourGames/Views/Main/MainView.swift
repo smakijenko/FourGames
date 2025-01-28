@@ -67,7 +67,6 @@ struct MainView: View {
 }
 
 extension MainView{
-    
     // User profile icon
     private var userIcon: some View {
         ZStack {
@@ -95,7 +94,7 @@ extension MainView{
                         .resizable()
                         .scaledToFit()
                         .frame(width: 60)
-                        .opacity(mainVm.iconsAnimating ? 0.75 : 1)
+                        .opacity(mainVm.iconsAnimating ? 0.8 : 1)
                 }
                 
             }
@@ -117,7 +116,7 @@ extension MainView{
                         .scaledToFit()
                         .frame(width: 55)
                 }
-                .opacity(mainVm.iconsAnimating ? 0.75 : 1)
+                .opacity(mainVm.iconsAnimating ? 0.8 : 1)
             }
         }
     }
@@ -153,7 +152,7 @@ extension MainView{
                 HStack {
                     ForEach(row, id: \.self) { view in
                         gameSquare(size: mainVm.adjustButtonSize(), view: view)
-                            .opacity(mainVm.iconsAnimating ? 0.75 : 1)
+                            .opacity(mainVm.iconsAnimating ? 0.8 : 1)
                     }
                 }
             }
@@ -166,15 +165,7 @@ extension MainView{
             mainVm.viewType = view
             mainVm.isGameOn.toggle()
         } label: {
-            ZStack {
-                Image(colorScheme == .dark ? "\(view)ButtonIconWhite" : "\(view)ButtonIconBlack")
-                    .resizable()
-                    .frame(width: size, height: size)
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(colorScheme == .dark ? .white : .black, lineWidth: 5)
-                    .frame(width: size, height: size)
-            }
-            .padding(1)
+            GameIconView(gameType: view.id, size: size, strokeWidth: 4, radius: 10)
         }
     }
 }
