@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.openURL) var openURL
     @Environment(\.colorScheme) var colorScheme
     @StateObject var mainVm = MainViewModel()
     
@@ -21,6 +22,10 @@ struct MainView: View {
                 }
                 logo
                 gameButtons
+                HStack {
+                    Spacer()
+                    infoIcon
+                }
                 Spacer()
             }
             .padding()
@@ -111,6 +116,24 @@ extension MainView{
                         .resizable()
                         .scaledToFit()
                         .frame(width: 55)
+                }
+                .opacity(mainVm.iconsAnimating ? 0.75 : 1)
+            }
+        }
+    }
+    
+    // Info icon
+    private var infoIcon: some View {
+        ZStack {
+            Button {
+                openURL(URL(string: "https://github.com/smakijenko/FourGames")!)
+            } label: {
+                ZStack {
+                    Image(systemName: "info")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 55)
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
                 }
                 .opacity(mainVm.iconsAnimating ? 0.75 : 1)
             }
