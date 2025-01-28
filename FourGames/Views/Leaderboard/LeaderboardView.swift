@@ -15,13 +15,10 @@ struct LeaderboardView: View {
             LogoView(logoName: "leaderboard", size: leaderVm.adjustLogoWidth())
             Spacer()
         }
+        .environmentObject(leaderVm)
     }
 }
 
 #Preview {
     LeaderboardView()
-}
-
-extension LeaderboardView {
-
 }
