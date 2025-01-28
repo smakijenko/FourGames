@@ -22,11 +22,11 @@ struct MainView: View {
                 }
                 logo
                 gameButtons
+                Spacer()
                 HStack {
                     Spacer()
                     infoIcon
                 }
-                Spacer()
             }
             .padding()
             .navigationDestination(isPresented: $mainVm.isGameOn) {
@@ -129,10 +129,10 @@ extension MainView{
                 openURL(URL(string: "https://github.com/smakijenko/FourGames")!)
             } label: {
                 ZStack {
-                    Image(systemName: "info")
+                    Image(systemName: "info.circle")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 55)
+                        .frame(width: 35)
                         .foregroundStyle(colorScheme == .dark ? .white : .black)
                 }
                 .opacity(mainVm.iconsAnimating ? 0.75 : 1)
