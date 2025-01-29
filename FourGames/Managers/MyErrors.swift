@@ -28,6 +28,7 @@ enum MyError: Error, LocalizedError, Equatable {
     case noGidToken
     case unableFetchUserScore
     case unableFetchBestScore
+    case unableFetchAllScores
     
     var errorDescription: String? {
         switch self {
@@ -68,9 +69,11 @@ enum MyError: Error, LocalizedError, Equatable {
         case .noGidToken:
             return "Error while trying to get Gid token."
         case .unableFetchUserScore:
-            return "Error while trying to fetch user scores."
+            return "Error while trying to fetch user score."
         case .unableFetchBestScore:
-            return "Error while trying to fetch best scores."
+            return "Error while trying to fetch best score."
+        case .unableFetchAllScores:
+            return "Error while trying to fetch all scores."
         }
     }
 }

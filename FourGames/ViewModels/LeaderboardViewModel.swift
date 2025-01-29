@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class LeaderboardViewModel: ObservableObject {
+    @Published var scores: [UserScoresDataModel] = []
     @Published var selectedGameType: GameType = .run
     @Published var tabIndicatorOffset: CGFloat = -3
     enum GameType: String, Identifiable {

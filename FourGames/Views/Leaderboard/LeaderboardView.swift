@@ -18,6 +18,16 @@ struct LeaderboardView: View {
             TabMenuView()
         }
         .environmentObject(leaderVm)
+        .onAppear {
+            Task {
+                do {
+                    leaderVm.scores = try await AuthManager.shared.fetchAllScores()
+                }
+                catch {
+                    
+                }
+            }
+        }
     }
 }
 

@@ -254,7 +254,6 @@ extension AuthManager {
             print("\(MyError.unableFetchBestScore.localizedDescription)")
             throw MyError.unableFetchBestScore
         }
-        print(bestScores)
         return UserScoresDataModel (
             uid: "",
             runScore: bestScores["runScore"] as! Int,
@@ -262,6 +261,29 @@ extension AuthManager {
             mazeScore: bestScores["mazeScore"] as! Double,
             towerScore: bestScores["towerScore"] as! Int
         )
+    }
+    
+    func fetchAllScores() async throws -> [UserScoresDataModel] {
+        var scores: [UserScoresDataModel] = []
+        let db = Firestore.firestore()
+        do {
+            let querySnapshot = try await db.collection("scores").getDocuments()
+            for document in querySnapshot.documents {
+                let data = document.data()
+                scores.append(UserScoresDataModel (
+                    uid: data["uId"] as! String,
+                    runScore: data["runScore"] as! Int,
+                    wordsScore: data["wordsScore"] as! Double,
+                    mazeScore: data["mazeScore"] as! Double,
+                    towerScore: data["towerScore"] as! Int
+                ))
+            }
+        }
+        catch {
+            print("\(MyError.unableFetchAllScores.localizedDescription)")
+            throw MyError.unableFetchAllScores
+        }
+        return scores
     }
     
     func signOut() throws {

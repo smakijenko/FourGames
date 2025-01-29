@@ -43,7 +43,7 @@ extension PodiumView {
             Image(systemName: "trophy")
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(colorScheme == .dark ? .black : .white)
+                .foregroundStyle(.yellow)
                 .frame(width: 40)
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
         }
@@ -81,6 +81,24 @@ extension PodiumView {
             userIcon(user: users[0])
             userIcon(user: users[2])
                 .offset(y: leaderVm.podiumHeight / 1.5)
+        }
+    }
+    
+    private func usersOnPodiumV2(user1: (String, String), user2: (String, String)?, user3: (String, String)?) -> some View {
+        return HStack {
+//            if let user2 = user2 {
+//                userIcon(name: user2.0, photoUrl: user2.1)
+//                    .offset(y: leaderVm.podiumHeight / 2)
+//            } else {
+//                Spacer()
+//            }
+//            userIcon(name: user1.0, photoUrl: user1.1)
+//            if let user3 = user3 {
+//                userIcon(name: user3.0, photoUrl: user3.1)
+//                    .offset(y: leaderVm.podiumHeight / 2)
+//            } else {
+//                Spacer()
+//            }
         }
     }
 }
