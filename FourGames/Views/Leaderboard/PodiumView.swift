@@ -11,7 +11,8 @@ struct PodiumView: View {
     @EnvironmentObject var leaderVm: LeaderboardViewModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        ZStack {
+        VStack {
+            usersOnPodium(users: Users().users)
             podium
         }
     }
@@ -45,6 +46,41 @@ extension PodiumView {
                 .foregroundStyle(colorScheme == .dark ? .black : .white)
                 .frame(width: 40)
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
+        }
+    }
+    
+    private func userIcon(user: AuthUserDataModel) -> some View {
+        return VStack(spacing: 5) {
+            ZStack {
+                AsyncImage(url: URL(string: user.photoUrl)) { Image in
+                    Image
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                } placeholder: {
+                    Image("defaultUserIcon")
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+            .frame(width: leaderVm.adjustLogoWidth() / 5.5, height: leaderVm.adjustLogoWidth() / 5.5)
+            .shadow(color: colorScheme == .dark ? .white : .black, radius: 3)
+            Text(user.name)
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                .minimumScaleFactor(0.1)
+                .frame(width: leaderVm.adjustLogoWidth() / 4)
+        }
+    }
+    
+    private func usersOnPodium(users: [AuthUserDataModel]) -> some View {
+        return HStack {
+            userIcon(user: users[1])
+                .offset(y: leaderVm.podiumHeight / 2)
+            userIcon(user: users[0])
+            userIcon(user: users[2])
+                .offset(y: leaderVm.podiumHeight / 1.5)
         }
     }
 }

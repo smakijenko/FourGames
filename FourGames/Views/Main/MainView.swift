@@ -96,7 +96,6 @@ extension MainView{
                         .frame(width: 60)
                         .opacity(mainVm.iconsAnimating ? 0.8 : 1)
                 }
-                
             }
         }
     }

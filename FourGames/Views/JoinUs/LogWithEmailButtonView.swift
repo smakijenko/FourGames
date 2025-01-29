@@ -186,6 +186,11 @@ extension LogWithEmailButtonView {
                 .padding(10)
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(10)
+                .onChange(of: joinVm.name) { _, newValue in
+                    if newValue.count > joinVm.nameCharacterLimit {
+                        joinVm.name = String(newValue.prefix(joinVm.nameCharacterLimit))
+                    }
+                }
             TextField("Email...", text: $joinVm.email)
                 .padding(10)
                 .background(Color.gray.opacity(0.4))

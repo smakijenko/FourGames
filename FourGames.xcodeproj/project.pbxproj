@@ -28,6 +28,7 @@
 		323278C72CED3B0500833964 /* RunGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323278C62CED3B0500833964 /* RunGround.swift */; };
 		323278C92CEE999900833964 /* Kangaroo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323278C82CEE999900833964 /* Kangaroo.swift */; };
 		323278CB2CF63AC900833964 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323278CA2CF63AC900833964 /* Obstacles.swift */; };
+		32413FD22D4AAD3600FC68D0 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32413FD12D4AAD3600FC68D0 /* Users.swift */; };
 		3251BB362D43D03E00484B7D /* NumberChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3251BB352D43D03E00484B7D /* NumberChartView.swift */; };
 		325D8FE82D1F766C00347971 /* TowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325D8FE72D1F766C00347971 /* TowerViewModel.swift */; };
 		325D8FEA2D1F76B700347971 /* TowerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325D8FE92D1F76A400347971 /* TowerGameScene.swift */; };
@@ -96,6 +97,7 @@
 		323278C62CED3B0500833964 /* RunGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGround.swift; sourceTree = "<group>"; };
 		323278C82CEE999900833964 /* Kangaroo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kangaroo.swift; sourceTree = "<group>"; };
 		323278CA2CF63AC900833964 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
+		32413FD12D4AAD3600FC68D0 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		3251BB352D43D03E00484B7D /* NumberChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberChartView.swift; sourceTree = "<group>"; };
 		325D8FE72D1F766C00347971 /* TowerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerViewModel.swift; sourceTree = "<group>"; };
 		325D8FE92D1F76A400347971 /* TowerGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerGameScene.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				328B058E2D05EDCB00E5A9EA /* WordsData.swift */,
+				32413FD12D4AAD3600FC68D0 /* Users.swift */,
 			);
 			path = Datas;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				328B058F2D05EDCB00E5A9EA /* WordsData.swift in Sources */,
 				323278C32CEBFA5A00833964 /* RunGameScene.swift in Sources */,
 				323278B22CE810F300833964 /* FourGamesApp.swift in Sources */,
+				32413FD22D4AAD3600FC68D0 /* Users.swift in Sources */,
 				323278C72CED3B0500833964 /* RunGround.swift in Sources */,
 				325D8FE82D1F766C00347971 /* TowerViewModel.swift in Sources */,
 				323278BD2CE833B900833964 /* RunView.swift in Sources */,

@@ -32,6 +32,7 @@ class JoinUsViewModel: ObservableObject {
             convertIntoImage(selection: imageSelection)
         }
     }
+    let nameCharacterLimit: Int = 20
     
     func adjustLogoWidth() -> CGFloat{
         let width = screenSize.width * 0.89
