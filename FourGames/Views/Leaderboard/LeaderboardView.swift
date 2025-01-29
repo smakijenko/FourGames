@@ -13,6 +13,7 @@ struct LeaderboardView: View {
     var body: some View {
         VStack {
             LogoView(logoName: "leaderboard", size: leaderVm.adjustLogoWidth())
+            PodiumView()
             Spacer()
             TabMenuView()
         }

@@ -48,6 +48,7 @@
 		328B058D2D05ED3400E5A9EA /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B058C2D05ED3400E5A9EA /* Word.swift */; };
 		328B058F2D05EDCB00E5A9EA /* WordsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B058E2D05EDCB00E5A9EA /* WordsData.swift */; };
 		328B05922D063DDD00E5A9EA /* WordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B05912D063DDD00E5A9EA /* WordsViewModel.swift */; };
+		328CAD252D4A0AC400B045CB /* PodiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CAD242D4A0AC400B045CB /* PodiumView.swift */; };
 		32A1DA5B2D38E0CC0099AE53 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 32A1DA5A2D38E0CC0099AE53 /* FirebaseAnalytics */; };
 		32A1DA5D2D38E0CC0099AE53 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 32A1DA5C2D38E0CC0099AE53 /* FirebaseAppCheck */; };
 		32A1DA5F2D38E0CC0099AE53 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32A1DA5E2D38E0CC0099AE53 /* FirebaseAuth */; };
@@ -113,6 +114,7 @@
 		328B058C2D05ED3400E5A9EA /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		328B058E2D05EDCB00E5A9EA /* WordsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsData.swift; sourceTree = "<group>"; };
 		328B05912D063DDD00E5A9EA /* WordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewModel.swift; sourceTree = "<group>"; };
+		328CAD242D4A0AC400B045CB /* PodiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodiumView.swift; sourceTree = "<group>"; };
 		32B55D9C2CFD922C00F84545 /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		32CFFF2B2D4826EE00DC586E /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		32CFFF2D2D48270100DC586E /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			children = (
 				32CFFF2B2D4826EE00DC586E /* LeaderboardView.swift */,
 				321624392D48BF4E00294E80 /* TabMenuView.swift */,
+				328CAD242D4A0AC400B045CB /* PodiumView.swift */,
 			);
 			path = Leaderboard;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				325D8FEE2D21E0B800347971 /* Block.swift in Sources */,
 				323278B92CE8339F00833964 /* MazeView.swift in Sources */,
 				328B05922D063DDD00E5A9EA /* WordsViewModel.swift in Sources */,
+				328CAD252D4A0AC400B045CB /* PodiumView.swift in Sources */,
 				3285402C2D3303DD005A00C8 /* JoinUsViewModel.swift in Sources */,
 				32DDB2122D2563F300DA2B4C /* Line.swift in Sources */,
 				3251BB362D43D03E00484B7D /* NumberChartView.swift in Sources */,
