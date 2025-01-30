@@ -57,10 +57,8 @@ class UserProfileViewModel: ObservableObject {
         return scale
     }
     
-    func signOutTask() throws -> Task<Void, Error> {
-        Task {
-            try AuthManager.shared.signOut()
-        }
+    func signOutTask() async throws {
+        try AuthManager.shared.signOut()
     }
     
     func deleteTask() throws -> Task<Void, Error> {
@@ -69,10 +67,8 @@ class UserProfileViewModel: ObservableObject {
         }
     }
     
-    func resetTask() throws -> Task<Void, Error> {
-        Task {
-            guard let email = authUser?.email else { return }
-            try await AuthManager.shared.resetPassword(email: email)
-        }
+    func resetTask() async throws {
+        guard let email = authUser?.email else { return }
+        try await AuthManager.shared.resetPassword(email: email)
     }
 }

@@ -19,10 +19,10 @@ struct UserProfileView: View {
                 userIcon
                 VStack(spacing: 12) {
                     if profileVm.authProvider == .email {
-                        submitButton(task: profileVm.resetTask, buttonText: "Reset password", buttonIcon: "key")
+                        submitButton(function: profileVm.resetTask, buttonText: "Reset password", buttonIcon: "key")
                     }
-                    submitButton(task: profileVm.signOutTask, buttonText: "Sign out", buttonIcon: "person.slash")
-                    submitButton(task: profileVm.deleteTask, buttonText: "Delete account", buttonIcon: "trash")
+                    submitButton(function: profileVm.signOutTask, buttonText: "Sign out", buttonIcon: "person.slash")
+                    submitButton(function: AuthManager.shared.delete, buttonText: "Delete account", buttonIcon: "trash")
                 }
             }
             if profileVm.chartsOn {
@@ -88,7 +88,7 @@ extension UserProfileView {
     }
     
     private func submitButton(
-        task: @escaping () throws -> Task<Void, Error>
+        function: @escaping () async throws -> Void
         , buttonText: String, buttonIcon: String) -> some View {
             return ZStack {
                 RoundedRectangle(cornerRadius: 24)
@@ -99,13 +99,15 @@ extension UserProfileView {
                     .foregroundStyle(colorScheme == .dark ? .black : .white)
                     .overlay {
                         Button {
-                            do {
-                                _ = try task()
+                            Task {
+                                do {
+                                    try await function()
+                                    isGameOn = false
+                                }
+                                catch {
+                                    // Handle alert saying that it was not possible to do an action
+                                }
                             }
-                            catch {
-                                // TODO - Handle alert saying that action was not possible
-                            }
-                            isGameOn = false
                         } label: {
                             HStack(spacing: 5) {
                                 Image(systemName: buttonIcon)
