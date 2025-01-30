@@ -29,6 +29,7 @@ struct LeaderboardView: View {
                 }
                 catch {
                     // Handle error saying that leaderboard view cannot be shown
+                    isGameOn = false
                 }
             }
         }

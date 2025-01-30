@@ -19,6 +19,12 @@ class LeaderboardViewModel: ObservableObject {
     let tabMenuHeight: CGFloat = 40
     let gameIconSize: CGFloat = 30
     let podiumHeight: CGFloat = 100
+    let scoreRowHeight: CGFloat = 40
+    var scoreRowWidth: CGFloat = 0
+    
+    init() {
+        scoreRowWidth = adjustLogoWidth() * 0.95
+    }
     
     func adjustLogoWidth() -> CGFloat {
         let width = screenSize.width * 0.89
@@ -41,13 +47,20 @@ class LeaderboardViewModel: ObservableObject {
         }
     }
     
+    func formatNumberForRow(num: Double) -> String {
+        if num.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(format: "%.0f", num)
+        } else {
+            return String(format: "%.1f", num)
+        }
+    }
+    
     func loadAllScores() async throws {
         var scores: [UserScoresDataModel] = []
-        let uId = try AuthManager.shared.getAuthenticatedUser().uid
         scores = try await AuthManager.shared.fetchAllScores()
         DispatchQueue.main.sync {
             self.scores = scores
         }
-        // Can throw .noAuthUser and .unableFetchAllScores
+        // Can throw .unableFetchAllScores
     }
 }
