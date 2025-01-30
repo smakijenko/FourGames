@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 
 class MainViewModel: ObservableObject {
-    @Published var isGameOn: Bool = false
-    @Published var viewType: ViewType = .noGame {
-        didSet {
-            Task {
-                try await loadAuthUser()
-            }
-        }
-    }
+    @Published var isGameOn: Bool = false {
+       didSet {
+           Task {
+               try await loadAuthUser()
+           }
+       }
+   }
+    @Published var viewType: ViewType = .noGame
     @Published var isLogoAnimating: Bool = false
     @Published var iconsAnimating: Bool = false
     @Published var authUser: AuthUserDataModel?
@@ -43,11 +43,17 @@ class MainViewModel: ObservableObject {
     
     func loadAuthUser() async throws {
         var user: AuthUserDataModel?
+        do {
             let uId = try AuthManager.shared.getAuthenticatedUser().uid
             user = try await AuthManager.shared.getAuthUserDataFromDB(uId: uId)
             DispatchQueue.main.sync {
                 self.authUser = user
             }
-        // Can throw .noAuthUser and .unableFetchUserData
+        }
+        catch {
+            DispatchQueue.main.sync {
+                self.authUser = nil
+            }
+        }
     }
 }

@@ -74,11 +74,11 @@ extension MainView{
                 Task {
                     do {
                         _ = try AuthManager.shared.getAuthenticatedUser()
-                        mainVm.isGameOn.toggle()
+                        mainVm.isGameOn = true
                         mainVm.viewType = .userProfile
                     }
                     catch {
-                        mainVm.isGameOn.toggle()
+                        mainVm.isGameOn = true
                         mainVm.viewType = .joinUs
                     }
                 }
@@ -162,7 +162,7 @@ extension MainView{
     private func gameSquare(size: CGFloat, view: MainViewModel.ViewType) -> some View {
         Button {
             mainVm.viewType = view
-            mainVm.isGameOn.toggle()
+            mainVm.isGameOn = true
         } label: {
             GameIconView(gameType: view.id, size: size, strokeWidth: 4, radius: 10)
         }
