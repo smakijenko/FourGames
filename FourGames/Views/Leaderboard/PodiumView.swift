@@ -15,6 +15,7 @@ struct PodiumView: View {
             usersOnPodium(users: Users().users)
             podium
         }
+        .frame(width: leaderVm.adjustLogoWidth() / 1.25, height: leaderVm.podiumHeight + leaderVm.adjustLogoWidth() / 3)
     }
 }
 
@@ -38,7 +39,6 @@ extension PodiumView {
                     .clipShape(.rect(cornerRadii: .init(bottomTrailing: 10, topTrailing: 10)))
             }
             .foregroundStyle(colorScheme == .dark ? .black : .white)
-            .frame(width: leaderVm.adjustLogoWidth() / 1.25)
             .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
             Image(systemName: "trophy")
                 .resizable()

@@ -13,7 +13,7 @@ class Users {
             uid: "1",
             email: "test1@test.com",
             photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s",
-            name: "Stanisław Makijenko"
+            name: "Carl Johnson"
         ),
         AuthUserDataModel (
             uid: "2",

@@ -19,7 +19,6 @@ struct ScoreRowView: View {
             bar
             HStack {
                 userIcon
-                Spacer()
                 labels
                 Spacer()
                 scoreIcon
