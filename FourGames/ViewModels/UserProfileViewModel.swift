@@ -17,44 +17,30 @@ class UserProfileViewModel: ObservableObject {
     
     func setProvider() throws {
         let provider = try AuthManager.shared.getProviders().first
-        guard let provider = provider else { return }
+        guard let provider = provider else { throw MyError.noProvider }
         authProvider = provider
     }
     
     func loadAuthUser() async throws {
         var user: AuthUserDataModel?
-        do {
-            let uId = try AuthManager.shared.getAuthenticatedUser().uid
-            user = try await AuthManager.shared.getAuthUserDataFromDB(uId: uId)
-            DispatchQueue.main.sync {
-                self.authUser = user
-            }
+        let uId = try AuthManager.shared.getAuthenticatedUser().uid
+        user = try await AuthManager.shared.getAuthUserDataFromDB(uId: uId)
+        DispatchQueue.main.sync {
+            self.authUser = user
         }
-        catch {
-            DispatchQueue.main.sync {
-                self.authUser = nil
-            }
-        }
+        // Can throw .noAuthUser and .unableFetchUserData
     }
     
     func loadScores() async throws {
         var userScores: UserScoresDataModel?
         var bestScores: UserScoresDataModel?
-        do {
-            let uId = try AuthManager.shared.getAuthenticatedUser().uid
-            userScores = try await AuthManager.shared.fetchUserScore(uId: uId)
-            bestScores = try await AuthManager.shared.fetchBestScore()
-            DispatchQueue.main.sync {
-                self.authUserScores = userScores
-                self.bestScores = bestScores
-                chartsOn = true
-            }
-        }
-        catch {
-            DispatchQueue.main.sync {
-                self.authUserScores = nil
-                self.bestScores = nil
-            }
+        let uId = try AuthManager.shared.getAuthenticatedUser().uid
+        userScores = try await AuthManager.shared.fetchUserScore(uId: uId)
+        bestScores = try await AuthManager.shared.fetchBestScore()
+        DispatchQueue.main.sync {
+            self.authUserScores = userScores
+            self.bestScores = bestScores
+            chartsOn = true
         }
     }
     

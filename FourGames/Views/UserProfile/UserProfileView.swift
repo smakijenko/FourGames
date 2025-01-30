@@ -38,18 +38,25 @@ struct UserProfileView: View {
                     try profileVm.setProvider()
                     try await profileVm.loadAuthUser()
                     try await profileVm.loadScores()
-                }
-                catch {
-                    if let myError = error as? MyError, myError == .noProvider || myError == .noAuthUser || myError == .unableFetchUserData {
+                } catch let myError as MyError {
+                    switch myError {
+                    case .noProvider, .noAuthUser, .unableFetchUserData:
+                        // TODO - HANDLE ALERT SAYING THAT IT WAS NOT POSSIBLE TO LOAD USER PROFILE
+                        isGameOn = false
+                    case .unableFetchBestScore, .unableFetchUserScore:
+                        // TODO - HANDLE ALERT SAYING THAT IT WAS NOT POSSIBLE TO LOAD USER SCORES
+                        break
+                    default:
+                        print("Unexpected error while loading UserProfileView.")
                         // TODO - HANDLE ALERT SAYING THAT IT WAS NOT POSSIBLE TO LOAD USER PROFILE
                         isGameOn = false
                     }
-                    else if let myError = error as? MyError, myError == .unableFetchBestScore || myError == .unableFetchUserScore {
-                        // TODO - HANDLE ALERT SAYING THAT IT WAS NOT POSSIBLE TO LOAD USER SCORES
-                    }
+                } catch {
+                    print("Unexpected error while loading UserProfileView: \(error.localizedDescription)")
                 }
             }
         }
+
     }
 }
 
