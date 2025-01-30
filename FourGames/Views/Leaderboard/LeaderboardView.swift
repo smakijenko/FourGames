@@ -10,6 +10,7 @@ import SwiftUI
 struct LeaderboardView: View {
     @StateObject private var leaderVm = LeaderboardViewModel()
     @Environment(\.colorScheme) var colorScheme
+    @Binding var isGameOn: Bool
     var body: some View {
         VStack {
             LogoView(logoName: "leaderboard", size: leaderVm.adjustLogoWidth())
@@ -21,10 +22,13 @@ struct LeaderboardView: View {
         .onAppear {
             Task {
                 do {
-                    leaderVm.scores = try await AuthManager.shared.fetchAllScores()
+                    try await leaderVm.loadAllScores()
+                    if leaderVm.scores.isEmpty {
+                        throw MyError.noLeaderboardScores
+                    }
                 }
                 catch {
-                    
+                    // Handle error saying that leaderboard view cannot be shown
                 }
             }
         }
@@ -32,5 +36,5 @@ struct LeaderboardView: View {
 }
 
 #Preview {
-    LeaderboardView()
+    LeaderboardView(isGameOn: .constant(true))
 }

@@ -44,7 +44,7 @@ struct MainView: View {
                 case .userProfile:
                     UserProfileView(isGameOn: $mainVm.isGameOn)
                 case .leaderboard:
-                    LeaderboardView()
+                    LeaderboardView(isGameOn: $mainVm.isGameOn)
                 default:
                     MainView()
                 }

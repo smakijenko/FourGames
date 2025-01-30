@@ -29,6 +29,7 @@ enum MyError: Error, LocalizedError, Equatable {
     case unableFetchUserScore
     case unableFetchBestScore
     case unableFetchAllScores
+    case noLeaderboardScores
     
     var errorDescription: String? {
         switch self {
@@ -74,6 +75,8 @@ enum MyError: Error, LocalizedError, Equatable {
             return "Error while trying to fetch best score."
         case .unableFetchAllScores:
             return "Error while trying to fetch all scores."
+        case .noLeaderboardScores:
+            return "There is no scores to show in leaderboard."
         }
     }
 }

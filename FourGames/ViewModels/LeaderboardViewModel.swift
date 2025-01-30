@@ -40,4 +40,14 @@ class LeaderboardViewModel: ObservableObject {
             }
         }
     }
+    
+    func loadAllScores() async throws {
+        var scores: [UserScoresDataModel] = []
+        let uId = try AuthManager.shared.getAuthenticatedUser().uid
+        scores = try await AuthManager.shared.fetchAllScores()
+        DispatchQueue.main.sync {
+            self.scores = scores
+        }
+        // Can throw .noAuthUser and .unableFetchAllScores
+    }
 }
