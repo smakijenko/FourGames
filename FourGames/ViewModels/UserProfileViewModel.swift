@@ -42,6 +42,7 @@ class UserProfileViewModel: ObservableObject {
             self.bestScores = bestScores
             chartsOn = true
         }
+        // Can throw .noAuthUser and .unableFetchUserScore and .unableToFetchBestScore
     }
     
     func adjustLogoWidth() -> CGFloat {

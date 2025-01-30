@@ -43,17 +43,11 @@ class MainViewModel: ObservableObject {
     
     func loadAuthUser() async throws {
         var user: AuthUserDataModel?
-        do {
             let uId = try AuthManager.shared.getAuthenticatedUser().uid
             user = try await AuthManager.shared.getAuthUserDataFromDB(uId: uId)
             DispatchQueue.main.sync {
                 self.authUser = user
             }
-        }
-        catch {
-            DispatchQueue.main.sync {
-                self.authUser = nil
-            }
-        }
+        // Can throw .noAuthUser and .unableFetchUserData
     }
 }
