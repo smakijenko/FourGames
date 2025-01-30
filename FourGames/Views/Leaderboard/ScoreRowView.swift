@@ -1,5 +1,5 @@
 //
-//  ScoreRow.swift
+//  ScoreRowView.swift
 //  FourGames
 //
 //  Created by Stanisław Makijenko on 30/01/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScoreRow: View {
+struct ScoreRowView: View {
     @EnvironmentObject var leaderVm: LeaderboardViewModel
     @Environment(\.colorScheme) var colorScheme
     let photoUrl: String
@@ -30,11 +30,11 @@ struct ScoreRow: View {
 }
 
 #Preview {
-    ScoreRow(photoUrl: Users().users.first!.photoUrl, name: Users().users.first!.name, score: 35.7, rank: 4)
+    ScoreRowView(photoUrl: Users().users.first!.photoUrl, name: Users().users.first!.name, score: 35.7, rank: 4)
         .environmentObject(LeaderboardViewModel())
 }
 
-extension ScoreRow {
+extension ScoreRowView {
     private var bar: some View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundStyle(colorScheme == .dark ? .black : .white)
