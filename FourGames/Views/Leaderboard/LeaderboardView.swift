@@ -14,9 +14,8 @@ struct LeaderboardView: View {
     var body: some View {
         VStack {
             LogoView(logoName: "leaderboard", size: leaderVm.adjustLogoWidth())
-            PodiumView()
+            PodiumView(user1: (Users().users[0].photoUrl, Users().users[0].name, "35"), user2: nil, user3: nil)
             ScoreRowView(photoUrl: Users().users[3].photoUrl, name: Users().users[3].name, score: 35.7, rank: 4)
-            ScoreRowView(photoUrl: Users().users[4].photoUrl, name: Users().users[4].name, score: 31, rank: 5)
             Spacer()
             TabMenuView()
         }

@@ -21,7 +21,8 @@ struct ScoreRowView: View {
                 userIcon
                 labels
                 Spacer()
-                scoreIcon
+                ScoreIconView(score: leaderVm.formatNumberForRow(num: score), size: 65, iconColor: colorScheme == .dark ? .black : .white)
+                    .offset(y: -leaderVm.scoreRowHeight / 4.1)
             }
             .frame(width: leaderVm.scoreRowWidth + 30)
         }
@@ -56,29 +57,6 @@ extension ScoreRowView {
         .frame(width: 60, height: 60)
         .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
         .offset(y: -leaderVm.scoreRowHeight / 2)
-    }
-    
-    private var scoreIcon: some View {
-        ZStack {
-            Image(colorScheme == .dark ? "rowScoreIconBlack" : "rowScoreIconWhite")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 65)
-                .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
-                .offset(y: -leaderVm.scoreRowHeight / 4.1)
-            Circle()
-                .foregroundStyle(.clear)
-                .frame(width: 50)
-                .overlay {
-                    Text(leaderVm.formatNumberForRow(num: score))
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(colorScheme == .dark ? .white : .black)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.1)
-                }
-                .offset(y: -leaderVm.scoreRowHeight / 2)
-        }
     }
     
     private var labels: some View {
