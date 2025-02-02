@@ -8,8 +8,18 @@
 import Foundation
 import SwiftUI
 
+struct LeaderboardScoreDataModel {
+    let uId: String
+    let photoUrl: String
+    let name: String
+    let runScore: Int
+    let wordsScore: Double
+    let mazeScore: Double
+    let towerScore: Int
+}
+
 class LeaderboardViewModel: ObservableObject {
-    @Published var scores: [UserScoresDataModel] = []
+    @Published var scores: [LeaderboardScoreDataModel] = []
     @Published var selectedGameType: GameType = .run
     @Published var tabIndicatorOffset: CGFloat = -3
     enum GameType: String, Identifiable {
@@ -57,9 +67,23 @@ class LeaderboardViewModel: ObservableObject {
     
     func loadAllScores() async throws {
         var scores: [UserScoresDataModel] = []
+        var leaderScores: [LeaderboardScoreDataModel] = []
         scores = try await AuthManager.shared.fetchAllScores()
+        for score in scores {
+            let authUser = try await AuthManager.shared.getAuthUserDataFromDB(uId: score.uid)
+            leaderScores.append(LeaderboardScoreDataModel (
+                uId: score.uid,
+                photoUrl: authUser.photoUrl,
+                name: authUser.name,
+                runScore: score.runScore,
+                wordsScore: score.wordsScore,
+                mazeScore: score.mazeScore,
+                towerScore: score.towerScore
+            ))
+        }
         DispatchQueue.main.sync {
-            self.scores = scores
+            self.scores = leaderScores
+            self.scores.sort { $0.runScore > $1.runScore }
         }
         // Can throw .unableFetchAllScores
     }

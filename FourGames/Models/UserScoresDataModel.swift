@@ -16,7 +16,7 @@ struct UserScoresDataModel {
 
     init(uid: String, runScore: Int, wordsScore: Double, mazeScore: Double, towerScore: Int) {
         self.uid = uid
-        self.runScore = towerScore
+        self.runScore = runScore
         self.wordsScore = wordsScore
         self.mazeScore = mazeScore
         self.towerScore = towerScore

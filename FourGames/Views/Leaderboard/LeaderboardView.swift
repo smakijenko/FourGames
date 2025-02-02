@@ -14,8 +14,16 @@ struct LeaderboardView: View {
     var body: some View {
         VStack {
             LogoView(logoName: "leaderboard", size: leaderVm.adjustLogoWidth())
-            PodiumView(user1: (Users().users[0].photoUrl, Users().users[0].name, "35"), user2: nil, user3: nil)
-            ScoreRowView(photoUrl: Users().users[3].photoUrl, name: Users().users[3].name, score: 35.7, rank: 4)
+            PodiumView (
+                user1: !leaderVm.scores.isEmpty ? (leaderVm.scores[0].photoUrl, leaderVm.scores[0].name, Double(leaderVm.scores[0].runScore)) : nil,
+                user2: leaderVm.scores.count > 1 ? (leaderVm.scores[1].photoUrl, leaderVm.scores[1].name, Double(leaderVm.scores[1].runScore)) : nil,
+                user3: leaderVm.scores.count > 2 ? (leaderVm.scores[2].photoUrl, leaderVm.scores[2].name, Double(leaderVm.scores[2].runScore)) : nil
+            )
+            if leaderVm.scores.count > 3 {
+                ForEach(3 ..< leaderVm.scores.count, id: \.self) { index in
+                    ScoreRowView(photoUrl: leaderVm.scores[index].photoUrl, name: leaderVm.scores[index].name, score: Double(leaderVm.scores[index].runScore), rank: index + 1)
+                }
+            }
             Spacer()
             TabMenuView()
         }

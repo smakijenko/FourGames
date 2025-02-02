@@ -34,8 +34,7 @@ class UserProfileViewModel: ObservableObject {
     func loadScores() async throws {
         var userScores: UserScoresDataModel?
         var bestScores: UserScoresDataModel?
-        let uId = try AuthManager.shared.getAuthenticatedUser().uid
-        userScores = try await AuthManager.shared.fetchUserScore(uId: uId)
+        userScores = try await AuthManager.shared.fetchUserScore(uId: authUser?.uid ?? "")
         bestScores = try await AuthManager.shared.fetchBestScore()
         DispatchQueue.main.sync {
             self.authUserScores = userScores

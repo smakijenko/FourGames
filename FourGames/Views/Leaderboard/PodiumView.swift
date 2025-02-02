@@ -11,9 +11,9 @@ struct PodiumView: View {
     @EnvironmentObject var leaderVm: LeaderboardViewModel
     @Environment(\.colorScheme) var colorScheme
             // photoUrl, name, score
-    let user1: (String, String, String)
-    let user2: (String, String, String)?
-    let user3: (String, String, String)?
+    let user1: (String, String, Double)?
+    let user2: (String, String, Double)?
+    let user3: (String, String, Double)?
     var body: some View {
         VStack {
             usersOnPodium()
@@ -25,9 +25,9 @@ struct PodiumView: View {
 
 #Preview {
     PodiumView (
-        user1: (Users().users[0].photoUrl, Users().users[0].name, "35"),
-        user2: (Users().users[1].photoUrl, Users().users[1].name, "33"),
-        user3: (Users().users[3].photoUrl, Users().users[3].name, "30")
+        user1: (Users().users[0].photoUrl, Users().users[0].name, 35),
+        user2: (Users().users[1].photoUrl, Users().users[1].name, 33),
+        user3: (Users().users[3].photoUrl, Users().users[3].name, 30)
     )
         .environmentObject(LeaderboardViewModel())
 }
@@ -42,7 +42,7 @@ extension PodiumView {
                     .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
                     .overlay {
                         if let user2 = user2 {
-                            ScoreIconView(score: user2.2, size: leaderVm.podiumHeight / 1.95, iconColor: .lightGray)
+                            ScoreIconView(score: leaderVm.formatNumberForRow(num: user2.2), size: leaderVm.podiumHeight / 1.95, iconColor: .lightGray)
                         }
                     }
                 Rectangle()
@@ -50,7 +50,9 @@ extension PodiumView {
                     .clipShape(.rect(cornerRadii: .init(topLeading: 10, topTrailing: 10)))
                     .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
                     .overlay {
-                        ScoreIconView(score: user1.2, size: leaderVm.podiumHeight / 1.5, iconColor: .yellow)
+                        if let user1 = user1 {
+                            ScoreIconView(score: leaderVm.formatNumberForRow(num: user1.2), size: leaderVm.podiumHeight / 1.5, iconColor: .yellow)
+                        }
                     }
                 Rectangle()
                     .frame(height: leaderVm.podiumHeight / 1.5)
@@ -58,7 +60,7 @@ extension PodiumView {
                     .shadow(color: colorScheme == .dark ? .white : .black, radius: 2.5)
                     .overlay {
                         if let user3 = user3 {
-                            ScoreIconView(score: user3.2, size: leaderVm.podiumHeight / 2.25, iconColor: .brown)
+                            ScoreIconView(score: leaderVm.formatNumberForRow(num: user3.2), size: leaderVm.podiumHeight / 2.25, iconColor: .brown)
                         }
                     }
 
@@ -100,7 +102,9 @@ extension PodiumView {
             } else {
                 Spacer()
             }
-            userIcon(photoUrl: user1.0, name: user1.1)
+            if let user1 = user1 {
+                userIcon(photoUrl: user1.0, name: user1.1)
+            }
             if let user3 = user3 {
                 userIcon(photoUrl: user3.0, name: user3.1)
                     .offset(y: leaderVm.podiumHeight / 3)
