@@ -11,6 +11,9 @@
 		3216243C2D496B2200294E80 /* GameIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216243B2D496B2200294E80 /* GameIconView.swift */; };
 		32270D9C2D36DF890034FFFA /* LogWithGoogleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32270D9B2D36DF890034FFFA /* LogWithGoogleButtonView.swift */; };
 		32270D9E2D36E05A0034FFFA /* LogWithEmailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32270D9D2D36E05A0034FFFA /* LogWithEmailButtonView.swift */; };
+		322E032B2D50A232007B84DC /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 322E032A2D50A232007B84DC /* Shimmer */; };
+		322E032D2D50A345007B84DC /* ShimmerPodiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E032C2D50A345007B84DC /* ShimmerPodiumView.swift */; };
+		322E032F2D512496007B84DC /* ShimmerScoreRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E032E2D512496007B84DC /* ShimmerScoreRowView.swift */; };
 		322FDCEC2D18BB4100DE13EE /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322FDCEB2D18BB4100DE13EE /* Maze.swift */; };
 		322FDCEE2D18BB4D00DE13EE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322FDCED2D18BB4D00DE13EE /* Stack.swift */; };
 		322FDCF02D18BBC100DE13EE /* MazeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322FDCEF2D18BBC100DE13EE /* MazeViewModel.swift */; };
@@ -82,6 +85,8 @@
 		3216243B2D496B2200294E80 /* GameIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameIconView.swift; sourceTree = "<group>"; };
 		32270D9B2D36DF890034FFFA /* LogWithGoogleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWithGoogleButtonView.swift; sourceTree = "<group>"; };
 		32270D9D2D36E05A0034FFFA /* LogWithEmailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWithEmailButtonView.swift; sourceTree = "<group>"; };
+		322E032C2D50A345007B84DC /* ShimmerPodiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerPodiumView.swift; sourceTree = "<group>"; };
+		322E032E2D512496007B84DC /* ShimmerScoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerScoreRowView.swift; sourceTree = "<group>"; };
 		322FDCEB2D18BB4100DE13EE /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		322FDCED2D18BB4D00DE13EE /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		322FDCEF2D18BBC100DE13EE /* MazeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeViewModel.swift; sourceTree = "<group>"; };
@@ -143,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				322E032B2D50A232007B84DC /* Shimmer in Frameworks */,
 				32A1DA6B2D38E0CC0099AE53 /* FirebaseStorageCombine-Community in Frameworks */,
 				32A1DA5D2D38E0CC0099AE53 /* FirebaseAppCheck in Frameworks */,
 				32A1DA612D38E0CC0099AE53 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -362,6 +368,8 @@
 				321624392D48BF4E00294E80 /* TabMenuView.swift */,
 				328CAD242D4A0AC400B045CB /* PodiumView.swift */,
 				32CAC61B2D4BE9F70004895B /* ScoreRowView.swift */,
+				322E032C2D50A345007B84DC /* ShimmerPodiumView.swift */,
+				322E032E2D512496007B84DC /* ShimmerScoreRowView.swift */,
 			);
 			path = Leaderboard;
 			sourceTree = "<group>";
@@ -412,6 +420,7 @@
 				32A1DA662D38E0CC0099AE53 /* FirebaseFirestoreCombine-Community */,
 				32A1DA682D38E0CC0099AE53 /* FirebaseStorage */,
 				32A1DA6A2D38E0CC0099AE53 /* FirebaseStorageCombine-Community */,
+				322E032A2D50A232007B84DC /* Shimmer */,
 			);
 			productName = FourGames;
 			productReference = 3232789A2CE810E500833964 /* FourGames.app */;
@@ -444,6 +453,7 @@
 			packageReferences = (
 				3281B4E22D2F1189008A634E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				32A1DA592D38E0CC0099AE53 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				322E03292D50A232007B84DC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3232789B2CE810E500833964 /* Products */;
@@ -510,6 +520,7 @@
 				323278B72CE8339100833964 /* WordsView.swift in Sources */,
 				32CFFF372D4846AF00DC586E /* LogoView.swift in Sources */,
 				322FDCEC2D18BB4100DE13EE /* Maze.swift in Sources */,
+				322E032D2D50A345007B84DC /* ShimmerPodiumView.swift in Sources */,
 				3281B4F62D2F1B2C008A634E /* SignInGoogleHelper.swift in Sources */,
 				323278BB2CE833A900833964 /* TowerView.swift in Sources */,
 				322FDCEE2D18BB4D00DE13EE /* Stack.swift in Sources */,
@@ -525,6 +536,7 @@
 				3216243C2D496B2200294E80 /* GameIconView.swift in Sources */,
 				322FDCF02D18BBC100DE13EE /* MazeViewModel.swift in Sources */,
 				32B55D9D2CFD922C00F84545 /* GameButton.swift in Sources */,
+				322E032F2D512496007B84DC /* ShimmerScoreRowView.swift in Sources */,
 				323278C52CED0B9200833964 /* RunViewModel.swift in Sources */,
 				32E11F032D405E0B00F76F5F /* MyErrors.swift in Sources */,
 			);
@@ -750,6 +762,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		322E03292D50A232007B84DC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 		3281B4E22D2F1189008A634E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -769,6 +789,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		322E032A2D50A232007B84DC /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 322E03292D50A232007B84DC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
 		3281B4E32D2F1189008A634E /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3281B4E22D2F1189008A634E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
