@@ -29,6 +29,7 @@ class AuthManager {
                 throw MyError.noProvider
             }
         }
+        print("Provider data fetched successfully!")
         return providers
     }
     
@@ -37,6 +38,7 @@ class AuthManager {
             print("\(MyError.noAuthUser.localizedDescription)")
             throw MyError.noAuthUser
         }
+        print("Auth user fetched successfully!")
         return AuthUserDataModel (
             uid: user.uid,
             email: user.email ?? "",
@@ -53,6 +55,7 @@ class AuthManager {
             print("\(MyError.unableFetchUserData.localizedDescription)")
             throw MyError.unableFetchUserData
         }
+        print("User data fetched successfully!")
         return AuthUserDataModel (
             uid: data["uId"] as! String,
             email: data["email"] as! String,
@@ -84,6 +87,7 @@ extension AuthManager {
                 )
                 try await addNewUserScores(uId: user.uid)
             }
+            print("User signed in with Google successfully!")
         }
         catch {
             print("\(MyError.unableSignInWithGoogle.localizedDescription)")
@@ -110,6 +114,7 @@ extension AuthManager {
         guard !email.isEmpty && !password.isEmpty else { return }
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)
+            print("User signed in with email successfully!")
         }
         catch {
             print("\(MyError.unableSignInWithEmail.localizedDescription)")
@@ -129,6 +134,7 @@ extension AuthManager {
             let uId = authDataResult.user.uid
             try await addNewUser(uId: uId, email: email, photoUrl: imageURL, name: name)
             try await addNewUserScores(uId: uId)
+            print("User signed up with email successfully!")
         }
         catch {
             if let myError = error as? MyError, myError == .unableDownloadImgUrl || myError == .unableUploadImgToStorage {
@@ -163,6 +169,7 @@ extension AuthManager {
                 throw MyError.unableUploadImgToStorage
             }
         }
+        print("Image uploaded successfully!")
         return imageURL
     }
     
@@ -175,6 +182,7 @@ extension AuthManager {
                 "photoUrl" : photoUrl,
                 "name" : name
             ])
+            print("New user added successfully!")
         } catch {
             print("\(MyError.unableAddUser.localizedDescription)")
             throw MyError.unableAddUser
@@ -191,6 +199,7 @@ extension AuthManager {
                 "mazeScore" : 0,
                 "towerScore" : 0
             ])
+            print("New user score added successfully!")
         } catch {
             print("\(MyError.unableAddUserScore.localizedDescription)")
             throw MyError.unableAddUserScore
@@ -208,6 +217,7 @@ extension AuthManager {
             print("\(MyError.unableFetchUserScore.localizedDescription)")
             throw MyError.unableFetchUserScore
         }
+        print("User score fetched successfully!")
         return UserScoresDataModel (
             uid: data["uId"] as! String,
             runScore: data["runScore"] as! Int,
@@ -254,6 +264,7 @@ extension AuthManager {
             print("\(MyError.unableFetchBestScore.localizedDescription)")
             throw MyError.unableFetchBestScore
         }
+        print("Best score fetched successfully!")
         return UserScoresDataModel (
             uid: "",
             runScore: bestScores["runScore"] as! Int,
@@ -263,6 +274,42 @@ extension AuthManager {
         )
     }
     
+    func signOut() throws {
+        do {
+            try Auth.auth().signOut()
+            print("User signed out successfully!")
+        }
+        catch {
+            print("\(MyError.unableSignOut.localizedDescription)")
+            throw MyError.unableSignOut
+        }
+    }
+    
+    func delete() async throws {
+        do {
+            try await Auth.auth().currentUser?.delete()
+            print("User deleted successfully!")
+        }
+        catch {
+            print("\(MyError.unableDeleteUser.localizedDescription)")
+            throw MyError.unableDeleteUser
+        }
+    }
+    
+    func resetPassword(email: String) async throws {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+            print("Email to reset password sent successfully!")
+        }
+        catch {
+            print("\(MyError.unableResetPassword.localizedDescription)")
+            throw MyError.unableResetPassword
+        }
+    }
+}
+
+// Leaderboard methods
+extension AuthManager {
     func fetchAllScores() async throws -> [UserScoresDataModel] {
         var scores: [UserScoresDataModel] = []
         let db = Firestore.firestore()
@@ -278,6 +325,7 @@ extension AuthManager {
                     towerScore: data["towerScore"] as! Int
                 ))
             }
+            print("All scores fetched successfully!")
         }
         catch {
             print("\(MyError.unableFetchAllScores.localizedDescription)")
@@ -285,34 +333,20 @@ extension AuthManager {
         }
         return scores
     }
-    
-    func signOut() throws {
+}
+
+// Saving scores
+extension AuthManager {
+    func savePlayerScore(gameType: String, score: Double) async throws {
+        let db = Firestore.firestore()
+        let authUserId = try getAuthenticatedUser().uid
+        let authUserScoresRef = db.collection("scores").document(authUserId)
         do {
-            try Auth.auth().signOut()
-        }
-        catch {
-            print("\(MyError.unableSignOut.localizedDescription)")
-            throw MyError.unableSignOut
-        }
-    }
-    
-    func delete() async throws {
-        do {
-            try await Auth.auth().currentUser?.delete()
-        }
-        catch {
-            print("\(MyError.unableDeleteUser.localizedDescription)")
-            throw MyError.unableDeleteUser
-        }
-    }
-    
-    func resetPassword(email: String) async throws {
-        do {
-            try await Auth.auth().sendPasswordReset(withEmail: email)
-        }
-        catch {
-            print("\(MyError.unableResetPassword.localizedDescription)")
-            throw MyError.unableResetPassword
+            try await authUserScoresRef.updateData([ gameType: score ])
+            print("Score saved successfully!")
+        } catch {
+            print("\(MyError.unableSavePlayerScore.localizedDescription)")
+            throw MyError.unableSavePlayerScore
         }
     }
 }
