@@ -11,8 +11,6 @@ struct NumberChartView: View {
     @EnvironmentObject var profileVm: UserProfileViewModel
     @Environment(\.colorScheme) var colorScheme
     @State private var height: CGFloat = 0
-    let maxHeight: CGFloat = 320
-    let iconOffset: CGFloat = 36
     let gameType: String
     let playerScore: Int
     let bestScore: Int
@@ -20,13 +18,13 @@ struct NumberChartView: View {
         ZStack {
             VStack {
                 bar()
-                GameIconView(gameType: gameType, size: profileVm.chartWidth, strokeWidth: 2, radius: 7)
+                GameIconView(gameType: gameType, size: profileVm.chartIconWidth, strokeWidth: 2, radius: 7)
             }
             labels()
         }
         .frame(width: 125, height: 400)
         .onAppear {
-            height = CGFloat(playerScore) / CGFloat(bestScore) * maxHeight
+            height = CGFloat(playerScore) / CGFloat(bestScore) * profileVm.maxChartHeight
         }
     }
 }
@@ -56,7 +54,7 @@ extension NumberChartView {
                 Spacer()
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.darkGray)
-                    .frame(width: 29, height: maxHeight)
+                    .frame(width: 29, height: profileVm.maxChartHeight)
             }
             VStack {
                 Spacer()
@@ -79,7 +77,7 @@ extension NumberChartView {
             VStack {
                 Spacer()
                 scoreLabel(score: String(playerScore), label: "My:")
-                    .offset(y: -height - iconOffset)
+                    .offset(y: -height - profileVm.numChartIconOffset)
             }
         }
         .frame(width: 125)

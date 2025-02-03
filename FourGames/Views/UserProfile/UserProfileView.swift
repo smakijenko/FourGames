@@ -28,6 +28,9 @@ struct UserProfileView: View {
             if profileVm.chartsOn {
                 charts()
             }
+            else {
+                shimmerCharts
+            }
             Spacer()
         }
         .padding(.horizontal)
@@ -56,7 +59,7 @@ struct UserProfileView: View {
                 }
             }
         }
-
+        
     }
 }
 
@@ -141,5 +144,15 @@ extension UserProfileView {
             .frame(height: 400 * profileVm.adjustChartSize())
             .scaleEffect(profileVm.adjustChartSize())
         )
+    }
+    
+    private var shimmerCharts: some View {
+        HStack(alignment: .bottom, spacing: 10) {
+            ForEach(0 ..< 4) { _ in
+                ShimmerChartView()
+            }
+        }
+        .frame(height: 400 * profileVm.adjustChartSize())
+        .scaleEffect(profileVm.adjustChartSize())
     }
 }

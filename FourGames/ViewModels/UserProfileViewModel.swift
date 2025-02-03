@@ -13,7 +13,12 @@ class UserProfileViewModel: ObservableObject {
     @Published var authUserScores: UserScoresDataModel?
     @Published var bestScores: UserScoresDataModel?
     @Published var chartsOn: Bool = false
-    let chartWidth: CGFloat = 50
+    let chartIconWidth: CGFloat = 50
+    let maxChartHeight: CGFloat = 320
+    let numChartIconOffset: CGFloat = 36
+    let timeChartIconOffset: CGFloat = 40
+    let timeChartBestMidOffset: CGFloat = 17
+
     
     func setProvider() throws {
         let provider = try AuthManager.shared.getProviders().first

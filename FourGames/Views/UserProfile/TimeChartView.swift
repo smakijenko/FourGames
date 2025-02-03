@@ -11,9 +11,6 @@ struct TimeChartView: View {
     @EnvironmentObject var profileVm: UserProfileViewModel
     @Environment(\.colorScheme) var colorScheme
     @State private var height: CGFloat = 0
-    let maxHeight: CGFloat = 320
-    let iconOffset: CGFloat = 40
-    let bestMidOffset: CGFloat = 17
     let gameType: String
     let playerScore: Double
     let bestScore: Double
@@ -21,22 +18,22 @@ struct TimeChartView: View {
         ZStack {
             VStack {
                 bar()
-                GameIconView(gameType: gameType, size: profileVm.chartWidth, strokeWidth: 2, radius: 7)
+                GameIconView(gameType: gameType, size: profileVm.chartIconWidth, strokeWidth: 2, radius: 7)
             }
             labels()
         }
         .frame(width: 125, height: 400)
         .onAppear {
-            height = (playerScore / (2*bestScore)) * maxHeight
-            if height > maxHeight {
-                height = maxHeight
+            height = (playerScore / (2*bestScore)) * profileVm.maxChartHeight
+            if height > profileVm.maxChartHeight {
+                height = profileVm.maxChartHeight
             }
         }
     }
 }
 
 #Preview {
-    TimeChartView(gameType: "labyrinth", playerScore: 200, bestScore: 47.1)
+    TimeChartView(gameType: "labyrinth", playerScore: 47.1, bestScore: 47.1)
         .environmentObject(UserProfileViewModel())
 }
 
@@ -60,14 +57,14 @@ extension TimeChartView {
                 Spacer()
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.darkGray)
-                    .frame(width: 29, height: maxHeight)
+                    .frame(width: 29, height: profileVm.maxChartHeight)
             }
             VStack {
                 Spacer()
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.lightGray)
                     .opacity(0.6)
-                    .frame(width: 29, height: 160)
+                    .frame(width: 29, height: height)
             }
         }
         .frame(width: 29)
@@ -77,13 +74,13 @@ extension TimeChartView {
         return HStack {
             VStack {
                 scoreLabel(score: String(bestScore), label: "Best:")
-                    .offset(y: -bestMidOffset)
+                    .offset(y: -profileVm.timeChartBestMidOffset)
             }
             Spacer()
             VStack {
                 Spacer()
                 scoreLabel(score: String(playerScore), label: "My:")
-                    .offset(y: -height - iconOffset)
+                    .offset(y: -height - profileVm.timeChartIconOffset)
             }
         }
         .frame(width: 125)
