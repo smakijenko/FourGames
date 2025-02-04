@@ -10,6 +10,8 @@ import SwiftUI
 import SpriteKit
 
 class TowerViewModel: ObservableObject {
+    @Published var isAlertOn: Bool = false
+    @Published var alertText: String = ""
     let gameSceneSize: CGSize
 
     init() {
@@ -19,6 +21,7 @@ class TowerViewModel: ObservableObject {
     func createScene(isDarkMode: Bool) -> SKScene {
         let scene = TowerGameScene(size: gameSceneSize, isDarkMode: isDarkMode)
         scene.scaleMode = .resizeFill
+        scene.towerVm = self
         return scene
     }
     

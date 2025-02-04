@@ -31,6 +31,12 @@ struct WordsView: View {
                 Spacer()
             }
         }
+        .alert(isPresented: $wordsVm.isAlertOn) {
+            Alert(
+                title: Text(wordsVm.alertText),
+                message: Text("Try again once again."),
+                dismissButton: .default(Text("Ok")))
+        }
     }
 }
 
@@ -140,5 +146,16 @@ extension WordsView {
             }
         }
         .ignoresSafeArea()
+        .onAppear {
+            Task {
+                do {
+                    try await AuthManager.shared.savePlayerScore(field: "wordsScore", score: wordsVm.elapsedTime)
+                }
+                catch {
+                    wordsVm.alertText = error.localizedDescription
+                    wordsVm.isAlertOn.toggle()
+                }
+            }
+        }
     }
 }

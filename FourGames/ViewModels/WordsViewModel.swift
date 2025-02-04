@@ -16,6 +16,8 @@ class WordsViewModel: ObservableObject {
     @Published var isGameOn: Bool = false
     @Published var isGameOver: Bool = false
     @Published var elapsedTime: CGFloat = 0.0
+    @Published var isAlertOn: Bool = false
+    @Published var alertText: String = ""
     private let lettersArr: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     private let wordsNum: Int = 8
     private var lastTile: (Int, Int)?

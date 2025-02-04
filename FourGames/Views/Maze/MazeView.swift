@@ -38,6 +38,12 @@ struct MazeView: View {
                 Spacer()
             }
         }
+        .alert(isPresented: $mazeVm.isAlertOn) {
+            Alert(
+                title: Text(mazeVm.alertText),
+                message: Text("Try again once again."),
+                dismissButton: .default(Text("Ok")))
+        }
     }
 }
 
@@ -123,5 +129,16 @@ extension MazeView {
             }
         }
         .ignoresSafeArea()
+        .onAppear {
+            Task {
+                do {
+                    try await AuthManager.shared.savePlayerScore(field: "mazeScore", score: mazeVm.elapsedTime)
+                }
+                catch {
+                    mazeVm.alertText = error.localizedDescription
+                    mazeVm.isAlertOn.toggle()
+                }
+            }
+        }
     }
 }

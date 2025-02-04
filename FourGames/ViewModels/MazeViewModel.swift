@@ -14,6 +14,8 @@ class MazeViewModel: ObservableObject {
     @Published var isGameOn: Bool = false
     @Published var isGameOver: Bool = false
     @Published var elapsedTime: CGFloat = 0.0
+    @Published var isAlertOn: Bool = false
+    @Published var alertText: String = ""
     private var mazeArrOG: [[Character]]
     private var lastTile: (Int, Int)?
     private var currentMarkedTiles: [(Int, Int)] = []

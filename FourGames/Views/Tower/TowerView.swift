@@ -21,6 +21,12 @@ struct TowerView: View {
                 Spacer()
             }
         }
+        .alert(isPresented: $towerVm.isAlertOn) {
+            Alert(
+                title: Text(towerVm.alertText),
+                message: Text("Try again once again."),
+                dismissButton: .default(Text("Ok")))
+        }
     }
 }
 

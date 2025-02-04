@@ -11,6 +11,7 @@ import SpriteKit
 var towerColor: String = ""
 
 class TowerGameScene: SKScene, GameButtonDelegate{
+    weak var towerVm: TowerViewModel?
     private let ground: TowerGround
     private let blocks: BlocksManager
     private let button: GameButton
@@ -51,6 +52,15 @@ class TowerGameScene: SKScene, GameButtonDelegate{
             ground.restartGround()
             button.showButton()
             isGameOn = false
+            Task {
+                do {
+                    try await AuthManager.shared.savePlayerScore(field: "runScore", score: Double(blocks.score))
+                }
+                catch {
+                    towerVm?.alertText = error.localizedDescription
+                    towerVm?.isAlertOn.toggle()
+                }
+            }
         }
     }
     
