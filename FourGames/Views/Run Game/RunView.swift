@@ -21,6 +21,12 @@ struct RunView: View {
                 Spacer()
             }
         }
+        .alert(isPresented: $runVm.isAlertOn) {
+            Alert(
+                title: Text(runVm.alertText),
+                message: Text("Try again once again."),
+                dismissButton: .default(Text("Ok")))
+        }
     }
 }
 

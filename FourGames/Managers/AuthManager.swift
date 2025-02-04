@@ -337,16 +337,22 @@ extension AuthManager {
 
 // Saving scores
 extension AuthManager {
-    func savePlayerScore(gameType: String, score: Double) async throws {
+    func savePlayerScore(field: String, score: Double) async throws {
         let db = Firestore.firestore()
-        let authUserId = try getAuthenticatedUser().uid
-        let authUserScoresRef = db.collection("scores").document(authUserId)
         do {
-            try await authUserScoresRef.updateData([ gameType: score ])
+            let authUserId = try getAuthenticatedUser().uid
+            let authUserScoresRef = db.collection("scores").document(authUserId)
+            try await authUserScoresRef.updateData([ field: score ])
             print("Score saved successfully!")
         } catch {
-            print("\(MyError.unableSavePlayerScore.localizedDescription)")
-            throw MyError.unableSavePlayerScore
+            if let myError = error as? MyError, myError == .noAuthUser{
+                print("\(MyError.unableSavePlayerScoreDueToNoAuthUser.localizedDescription)")
+                throw MyError.unableSavePlayerScoreDueToNoAuthUser
+            }
+            else {
+                print("\(MyError.unableSavePlayerScore.localizedDescription)")
+                throw MyError.unableSavePlayerScore
+            }
         }
     }
 }

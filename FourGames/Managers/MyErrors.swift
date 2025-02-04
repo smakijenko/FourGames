@@ -31,6 +31,7 @@ enum MyError: Error, LocalizedError, Equatable {
     case unableFetchAllScores
     case noLeaderboardScores
     case unableSavePlayerScore
+    case unableSavePlayerScoreDueToNoAuthUser
     
     var errorDescription: String? {
         switch self {
@@ -80,6 +81,8 @@ enum MyError: Error, LocalizedError, Equatable {
             return "There is no scores to show in leaderboard."
         case .unableSavePlayerScore:
             return "Error while trying to save player score."
+        case .unableSavePlayerScoreDueToNoAuthUser:
+            return "Error while trying to save player score. You are not logged in"
         }
     }
 }

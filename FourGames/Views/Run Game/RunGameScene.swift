@@ -12,6 +12,7 @@ import SpriteKit
 var runColor: String = ""
 
 class RunGameScene: SKScene, GameButtonDelegate {
+    weak var runVm: RunViewModel?
     private let ground: RunGround
     private let kangaroo: Kangaroo
     private let obstacles: Obstacles
@@ -62,6 +63,15 @@ class RunGameScene: SKScene, GameButtonDelegate {
                 obstacles.removeAnimations()
                 isGameOn = false
                 button.showButton()
+                Task {
+                    do {
+                        try await AuthManager.shared.savePlayerScore(field: "runScore", score: Double(scoreLabel.score))
+                    }
+                    catch {
+                        runVm?.alertText = error.localizedDescription
+                        runVm?.isAlertOn.toggle()
+                    }
+                }
             }
         }
     }

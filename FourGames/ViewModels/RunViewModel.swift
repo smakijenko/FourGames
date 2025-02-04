@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-class RunViewModel: ObservableObject{
+class RunViewModel: ObservableObject {
+    @Published var isAlertOn: Bool = false
+    @Published var alertText: String = ""
     private let gameHeight: CGFloat = 250
     let gameSceneSize: CGSize
     
@@ -20,6 +22,7 @@ class RunViewModel: ObservableObject{
     func createScene(isDarkMode: Bool) -> SKScene {
         let scene = RunGameScene(size: gameSceneSize, isDarkMode: isDarkMode, screenWidth: gameSceneSize.width, heightOffset: adjustGameOffset())
         scene.scaleMode = .resizeFill
+        scene.runVm = self
         return scene
     }
     
