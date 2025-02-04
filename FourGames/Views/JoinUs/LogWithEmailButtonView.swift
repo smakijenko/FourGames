@@ -153,7 +153,8 @@ extension LogWithEmailButtonView {
                 try await AuthManager.shared.signInEmailUser(email: joinVm.email, password: joinVm.password)
             }
             catch {
-                // TODO - Handle alert saying that signing in via email was not possible
+                joinVm.alertText = error.localizedDescription
+                joinVm.isAlertOn.toggle()
             }
             isGameOn = false
         }
@@ -213,7 +214,8 @@ extension LogWithEmailButtonView {
                 )
             }
             catch {
-                // TODO - Handle alert saying that signing up via email was not possible
+                joinVm.alertText = error.localizedDescription
+                joinVm.isAlertOn.toggle()
             }
             isGameOn = false
         }

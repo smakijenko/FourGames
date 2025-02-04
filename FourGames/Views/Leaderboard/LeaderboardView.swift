@@ -49,10 +49,17 @@ struct LeaderboardView: View {
                     }
                 }
                 catch {
-                    // Handle error saying that leaderboard view cannot be shown
+                    leaderVm.alertText = error.localizedDescription
+                    leaderVm.isAlertOn.toggle()
                     isGameOn = false
                 }
             }
+        }
+        .alert(isPresented: $leaderVm.isAlertOn) {
+            Alert(
+                title: Text(leaderVm.alertText),
+                message: Text("Try again once again."),
+                dismissButton: .default(Text("Ok")))
         }
     }
 }

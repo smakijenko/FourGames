@@ -12,6 +12,8 @@ class LeaderboardViewModel: ObservableObject {
     @Published var scores: [LeaderboardScoreDataModel] = []
     @Published var selectedGameType: GameType = .run
     @Published var tabIndicatorOffset: CGFloat = -3
+    @Published var isAlertOn: Bool = false
+    @Published var alertText: String = ""
     enum GameType: String, Identifiable {
         case run, words, labyrinth, tower
         var id: String { rawValue }

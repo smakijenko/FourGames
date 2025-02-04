@@ -20,6 +20,12 @@ struct JoinUsView: View {
             Spacer()
         }
         .environmentObject(joinVm)
+        .alert(isPresented: $joinVm.isAlertOn) {
+            Alert(
+                title: Text(joinVm.alertText),
+                message: Text("Try again once again."),
+                dismissButton: .default(Text("Ok")))
+        }
     }
 }
 

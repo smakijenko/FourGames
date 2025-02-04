@@ -13,6 +13,8 @@ class UserProfileViewModel: ObservableObject {
     @Published var authUserScores: UserScoresDataModel?
     @Published var bestScores: UserScoresDataModel?
     @Published var chartsOn: Bool = false
+    @Published var isAlertOn: Bool = false
+    @Published var alertText: String = ""
     let chartIconWidth: CGFloat = 50
     let maxChartHeight: CGFloat = 320
     let numChartIconOffset: CGFloat = 36

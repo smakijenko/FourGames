@@ -44,22 +44,33 @@ struct UserProfileView: View {
                 } catch let myError as MyError {
                     switch myError {
                     case .noProvider, .noAuthUser, .unableFetchUserData:
-                        // TODO - HANDLE ALERT SAYING THAT IT WAS NOT POSSIBLE TO LOAD USER PROFILE
+                        profileVm.alertText = "Error while trying to load user profile."
+                        profileVm.isAlertOn.toggle()
                         isGameOn = false
                     case .unableFetchBestScore, .unableFetchUserScore:
-                        // TODO - HANDLE ALERT SAYING THAT IT WAS NOT POSSIBLE TO LOAD USER SCORES
+                        profileVm.alertText = "Error while trying to load user scores."
+                        profileVm.isAlertOn.toggle()
                         break
                     default:
                         print("Unexpected error while loading UserProfileView.")
-                        // TODO - HANDLE ALERT SAYING THAT IT WAS NOT POSSIBLE TO LOAD USER PROFILE
+                        profileVm.alertText = "Error while trying to load user profile."
+                        profileVm.isAlertOn.toggle()
                         isGameOn = false
                     }
                 } catch {
                     print("Unexpected error while loading UserProfileView: \(error.localizedDescription)")
+                    profileVm.alertText = "Error while trying to load user profile."
+                    profileVm.isAlertOn.toggle()
+                    isGameOn = false
                 }
             }
         }
-        
+        .alert(isPresented: $profileVm.isAlertOn) {
+            Alert(
+                title: Text(profileVm.alertText),
+                message: Text("Try again once again."),
+                dismissButton: .default(Text("Ok")))
+        }
     }
 }
 

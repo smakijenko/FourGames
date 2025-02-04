@@ -32,6 +32,8 @@ class JoinUsViewModel: ObservableObject {
             convertIntoImage(selection: imageSelection)
         }
     }
+    @Published var isAlertOn: Bool = false
+    @Published var alertText: String = ""
     let nameCharacterLimit: Int = 20
     
     func adjustLogoWidth() -> CGFloat{

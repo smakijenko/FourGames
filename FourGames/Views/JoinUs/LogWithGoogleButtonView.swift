@@ -39,7 +39,8 @@ extension LogWithGoogleButtonView {
                     isGameOn = false
                 }
                 catch {
-                    // TODO - Handle alert saying that signing in was not possible
+                    joinVm.alertText = error.localizedDescription
+                    joinVm.isAlertOn.toggle()
                 }
             }
         } label: {
