@@ -43,6 +43,19 @@ struct LeaderboardView: View {
         .onAppear {
             Task {
                 do {
+                    try? await Task.sleep(for: .seconds(10))
+                    if leaderVm.scores.isEmpty {
+                        throw MyError.noLeaderboardScores
+                    }
+                }
+                catch {
+                    leaderVm.alertText = error.localizedDescription
+                    leaderVm.isAlertOn.toggle()
+                    isGameOn = false
+                }
+            }
+            Task {
+                do {
                     try await leaderVm.loadAllScores()
                     if leaderVm.scores.isEmpty {
                         throw MyError.noLeaderboardScores
