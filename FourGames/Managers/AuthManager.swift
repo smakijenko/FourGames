@@ -341,9 +341,33 @@ extension AuthManager {
         let db = Firestore.firestore()
         do {
             let authUserId = try getAuthenticatedUser().uid
+            let userGameScore = try await fetchUserScore(uId: authUserId)
             let authUserScoresRef = db.collection("scores").document(authUserId)
-            try await authUserScoresRef.updateData([ field: score ])
-            print("Score saved successfully!")
+            switch field {
+            case "runScore":
+                if score > Double(userGameScore.runScore) {
+                    try await authUserScoresRef.updateData([ field: score ])
+                    print("Run score saved successfully!")
+                }
+            case "wordsScore":
+                if score < Double(userGameScore.wordsScore) && score > 0{
+                    try await authUserScoresRef.updateData([ field: score ])
+                    print("Words score saved successfully!")
+                }
+            case "mazeScore":
+                if score < Double(userGameScore.mazeScore) && score > 0 {
+                    try await authUserScoresRef.updateData([ field: score ])
+                    print("Maze score saved successfully!")
+                }
+            case "towerScore":
+                if score > Double(userGameScore.towerScore) {
+                    try await authUserScoresRef.updateData([ field: score ])
+                    print("Tower score saved successfully!")
+                }
+            default:
+                print("Invalid field name!")
+                throw MyError.unableSavePlayerScore
+            }
         } catch {
             if let myError = error as? MyError, myError == .noAuthUser{
                 print("\(MyError.unableSavePlayerScoreDueToNoAuthUser.localizedDescription)")
