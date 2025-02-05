@@ -16,10 +16,11 @@ class MainViewModel: ObservableObject {
            }
        }
    }
+    @Published var authUser: AuthUserDataModel?
     @Published var viewType: ViewType = .noGame
     @Published var isLogoAnimating: Bool = false
     @Published var iconsAnimating: Bool = false
-    @Published var authUser: AuthUserDataModel?
+    @Published var entryAnimation: Bool = false
     
     enum ViewType: String, Identifiable {
         case run, words, labyrinth, tower, joinUs, userProfile, leaderboard, noGame

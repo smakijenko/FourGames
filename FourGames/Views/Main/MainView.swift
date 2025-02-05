@@ -11,21 +11,25 @@ struct MainView: View {
     @Environment(\.openURL) var openURL
     @Environment(\.colorScheme) var colorScheme
     @StateObject var mainVm = MainViewModel()
-    
     var body: some View {
         NavigationStack{
             VStack(spacing: 55) {
                 HStack{
                     leaderboardsIcon
+                        .offset(x: mainVm.entryAnimation ? 0 : -100)
                     Spacer()
                     userIcon
+                        .offset(x: mainVm.entryAnimation ? 0 : 100)
                 }
                 logo
+                    .opacity(mainVm.entryAnimation ? 1 : 0)
                 gameButtons
+                    .opacity(mainVm.entryAnimation ? 1 : 0)
                 Spacer()
                 HStack {
                     Spacer()
                     infoIcon
+                        .offset(x: mainVm.entryAnimation ? 0 : 100)
                 }
             }
             .padding()
@@ -54,9 +58,12 @@ struct MainView: View {
         .onAppear {
             mainVm.isGameOn = false
             mainVm.viewType = .noGame
-            withAnimation(.linear(duration: 0.75).repeatForever()){
+            withAnimation(.linear(duration: 0.75).repeatForever()) {
                 mainVm.isLogoAnimating = true
                 mainVm.iconsAnimating = true
+            }
+            withAnimation(.easeInOut(duration: 0.4)) {
+                mainVm.entryAnimation = true
             }
         }
     }
