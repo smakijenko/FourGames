@@ -10,12 +10,14 @@ import SpriteKit
 
 class ScoreLabel: SKNode {
     private let label: SKLabelNode
+    private let typeLabel: SKLabelNode
     private let background: SKShapeNode
     private var ticks: Int = 0
     var score: Int = 0
     
-    init(pos: CGPoint, isDarkMode: Bool) {
+    init(pos: CGPoint, isDarkMode: Bool, type: String) {
         label = SKLabelNode(text: "000\(score)")
+        typeLabel = SKLabelNode(text: type)
         background = SKShapeNode(rectOf: CGSize(width: 90, height: 27), cornerRadius: 7.5)
         super.init()
         background.strokeColor = .clear
@@ -27,8 +29,14 @@ class ScoreLabel: SKNode {
         label.fontColor = isDarkMode ? .white : .black
         label.fontSize = 25
         label.fontName = "Joystix"
+        typeLabel.position = CGPoint(x: pos.x, y: pos.y + 25)
+        typeLabel.zPosition = 4
+        typeLabel.fontColor = isDarkMode ? .white : .black
+        typeLabel.fontSize = 20
+        typeLabel.fontName = "Joystix"
         addChild(background)
         addChild(label)
+        addChild(typeLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

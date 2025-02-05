@@ -18,6 +18,7 @@ class RunGameScene: SKScene, GameButtonDelegate {
     private let obstacles: Obstacles
     private let button: GameButton
     private let scoreLabel: ScoreLabel
+    private let bestScoreLabel: ScoreLabel
     private let ugIcons: UndergroundIcons
     
     private let startSpeed: Int = 6
@@ -31,7 +32,8 @@ class RunGameScene: SKScene, GameButtonDelegate {
         kangaroo = Kangaroo(heighOffset: heightOffset)
         obstacles = Obstacles(heightOffset: heightOffset)
         button = GameButton(pos: CGPoint(x: size.width / 2, y: size.height / 2), color: runColor)
-        scoreLabel = ScoreLabel(pos: CGPoint(x: screenWidth * 0.89, y: 220 + heightOffset), isDarkMode: isDarkMode)
+        scoreLabel = ScoreLabel(pos: CGPoint(x: screenWidth * 0.88, y: 220 + heightOffset), isDarkMode: isDarkMode, type: "")
+        bestScoreLabel = ScoreLabel(pos: CGPoint(x: screenWidth * 0.12, y: 220 + heightOffset), isDarkMode: isDarkMode, type: "Best")
         ugIcons = UndergroundIcons(heightOffset: heightOffset)
         super.init(size: size)
         button.delegate = self
@@ -109,5 +111,11 @@ class RunGameScene: SKScene, GameButtonDelegate {
         if score % 30 == 0 {
             movingSpeed = CGFloat(score / 30 + startSpeed)
         }
+    }
+    
+    private func fetchBestScore() async {
+        guard let uId = try? AuthManager.shared.getAuthenticatedUser().uid else { return }
+        let bestScore = try? await AuthManager.shared.fetchUserScore(uId: uId).runScore
+        bestScoreLabel.showLable(score: bestScore ?? 0)
     }
 }

@@ -24,7 +24,7 @@ class TowerGameScene: SKScene, GameButtonDelegate{
         ground = TowerGround()
         blocks = BlocksManager()
         button = GameButton(pos: CGPoint(x: size.width / 2, y: size.height / 2), color: towerColor)
-        scoreLabel = ScoreLabel(pos: CGPoint(x: size.width / 1.21, y: 17), isDarkMode: isDarkMode)
+        scoreLabel = ScoreLabel(pos: CGPoint(x: size.width / 1.21, y: 17), isDarkMode: isDarkMode, type: "")
         hearts = Hearts(position: CGPoint(x: size.width / 10, y: 28))
         super.init(size: size)
         button.delegate = self
