@@ -118,7 +118,7 @@ class MazeViewModel: ObservableObject {
     }
     
     private func adjustTileSize() -> CGFloat {
-        let tileWidth = (screenSize.width - 2) / CGFloat(mazeSize)
+        let tileWidth = (screenSize.width - 14) / CGFloat(mazeSize)
         if tileWidth >= 38 { return 38 }
         return tileWidth
     }
