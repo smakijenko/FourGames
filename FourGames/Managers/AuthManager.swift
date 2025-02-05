@@ -350,12 +350,12 @@ extension AuthManager {
                     print("Run score saved successfully!")
                 }
             case "wordsScore":
-                if score < Double(userGameScore.wordsScore) && score > 0{
+                if score < Double(userGameScore.wordsScore) || userGameScore.wordsScore == 0 {
                     try await authUserScoresRef.updateData([ field: score ])
                     print("Words score saved successfully!")
                 }
             case "mazeScore":
-                if score < Double(userGameScore.mazeScore) && score > 0 {
+                if score < Double(userGameScore.mazeScore) || userGameScore.mazeScore == 0 {
                     try await authUserScoresRef.updateData([ field: score ])
                     print("Maze score saved successfully!")
                 }

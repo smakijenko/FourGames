@@ -119,7 +119,6 @@ extension MazeView {
                 .foregroundStyle(.ultraThinMaterial)
             VStack {
                 VStack(spacing: 10) {
-                    Text("Best score: 42.0") // TODO
                     Text("Score: " + String(format: "%.1f", mazeVm.elapsedTime))
                 }
                 .font(.title)
@@ -127,18 +126,19 @@ extension MazeView {
                 .foregroundStyle(.primary)
                 startButton(isDarkMode: isDarkMode)
             }
-        }
-        .ignoresSafeArea()
-        .onAppear {
-            Task {
-                do {
-                    try await AuthManager.shared.savePlayerScore(field: "mazeScore", score: mazeVm.elapsedTime)
-                }
-                catch {
-                    mazeVm.alertText = error.localizedDescription
-                    mazeVm.isAlertOn.toggle()
+            .onAppear {
+                Task {
+                    do {
+                        let roundedValue = (mazeVm.elapsedTime * 10).rounded() / 10
+                        try await AuthManager.shared.savePlayerScore(field: "mazeScore", score: roundedValue)
+                    }
+                    catch {
+                        mazeVm.alertText = error.localizedDescription
+                        mazeVm.isAlertOn.toggle()
+                    }
                 }
             }
         }
+        .ignoresSafeArea()
     }
 }

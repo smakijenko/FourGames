@@ -136,7 +136,6 @@ extension WordsView {
                 .foregroundStyle(.ultraThinMaterial)
             VStack {
                 VStack(spacing: 10) {
-                    Text("Best score: 42.0") // TODO
                     Text("Score: " + String(format: "%.1f", wordsVm.elapsedTime))
                 }
                 .font(.title)
@@ -144,18 +143,19 @@ extension WordsView {
                 .foregroundStyle(.primary)
                 startButton(isDarkMode: isDarkMode)
             }
-        }
-        .ignoresSafeArea()
-        .onAppear {
-            Task {
-                do {
-                    try await AuthManager.shared.savePlayerScore(field: "wordsScore", score: wordsVm.elapsedTime)
-                }
-                catch {
-                    wordsVm.alertText = error.localizedDescription
-                    wordsVm.isAlertOn.toggle()
+            .onAppear {
+                Task {
+                    do {
+                        let roundedValue = (wordsVm.elapsedTime * 10).rounded() / 10
+                        try await AuthManager.shared.savePlayerScore(field: "wordsScore", score: roundedValue)
+                    }
+                    catch {
+                        wordsVm.alertText = error.localizedDescription
+                        wordsVm.isAlertOn.toggle()
+                    }
                 }
             }
         }
+        .ignoresSafeArea()
     }
 }

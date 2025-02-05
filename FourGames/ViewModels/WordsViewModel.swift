@@ -47,7 +47,7 @@ class WordsViewModel: ObservableObject {
         tileLetter = Array(repeating: Array(repeating: " ", count: squareSideLenght), count: squareSideLenght)
         generateWords()
         putWordsIntoGrid()
-        generateLetters()
+//        generateLetters()
         elapsedTime = 0.0
         switchOffGameOver()
         isGameOn = true
