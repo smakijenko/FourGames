@@ -15,6 +15,7 @@
 		322E032D2D50A345007B84DC /* ShimmerPodiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E032C2D50A345007B84DC /* ShimmerPodiumView.swift */; };
 		322E032F2D512496007B84DC /* ShimmerScoreRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E032E2D512496007B84DC /* ShimmerScoreRowView.swift */; };
 		322E03312D514A82007B84DC /* ShimmerChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E03302D514A82007B84DC /* ShimmerChartView.swift */; };
+		322E03372D542504007B84DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 322E03362D542504007B84DC /* GoogleService-Info.plist */; };
 		322FDCEC2D18BB4100DE13EE /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322FDCEB2D18BB4100DE13EE /* Maze.swift */; };
 		322FDCEE2D18BB4D00DE13EE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322FDCED2D18BB4D00DE13EE /* Stack.swift */; };
 		322FDCF02D18BBC100DE13EE /* MazeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322FDCEF2D18BBC100DE13EE /* MazeViewModel.swift */; };
@@ -46,7 +47,6 @@
 		3277F42D2D021E7E0090B251 /* UndergroundIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277F42C2D021E7E0090B251 /* UndergroundIcons.swift */; };
 		3281B4E42D2F1189008A634E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 3281B4E32D2F1189008A634E /* GoogleSignIn */; };
 		3281B4E62D2F1189008A634E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3281B4E52D2F1189008A634E /* GoogleSignInSwift */; };
-		3281B4EC2D2F146E008A634E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3281B4EB2D2F146E008A634E /* GoogleService-Info.plist */; };
 		3281B4EF2D2F15F9008A634E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281B4EE2D2F15F9008A634E /* Utilities.swift */; };
 		3281B4F62D2F1B2C008A634E /* SignInGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281B4F52D2F1B25008A634E /* SignInGoogleHelper.swift */; };
 		3285402A2D330053005A00C8 /* JoinUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328540292D330053005A00C8 /* JoinUsView.swift */; };
@@ -89,6 +89,7 @@
 		322E032C2D50A345007B84DC /* ShimmerPodiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerPodiumView.swift; sourceTree = "<group>"; };
 		322E032E2D512496007B84DC /* ShimmerScoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerScoreRowView.swift; sourceTree = "<group>"; };
 		322E03302D514A82007B84DC /* ShimmerChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerChartView.swift; sourceTree = "<group>"; };
+		322E03362D542504007B84DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		322FDCEB2D18BB4100DE13EE /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		322FDCED2D18BB4D00DE13EE /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		322FDCEF2D18BBC100DE13EE /* MazeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeViewModel.swift; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		325E188F2D47ABA700BA3612 /* TimeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChartView.swift; sourceTree = "<group>"; };
 		3277F4292D0035970090B251 /* joystix-monospace.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "joystix-monospace.otf"; sourceTree = "<group>"; };
 		3277F42C2D021E7E0090B251 /* UndergroundIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndergroundIcons.swift; sourceTree = "<group>"; };
-		3281B4EB2D2F146E008A634E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3281B4EE2D2F15F9008A634E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		3281B4F52D2F1B25008A634E /* SignInGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGoogleHelper.swift; sourceTree = "<group>"; };
 		328540292D330053005A00C8 /* JoinUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinUsView.swift; sourceTree = "<group>"; };
@@ -216,8 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				323278AD2CE810F300833964 /* Assets.xcassets */,
-				3281B4EB2D2F146E008A634E /* GoogleService-Info.plist */,
 				323278AF2CE810F300833964 /* FourGamesApp.swift */,
+				322E03362D542504007B84DC /* GoogleService-Info.plist */,
 				323278AC2CE810F300833964 /* Preview Content */,
 				3281B4F22D2F1AA7008A634E /* Managers */,
 				3277F4282D00357C0090B251 /* Fonts */,
@@ -474,7 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				323278B32CE810F300833964 /* Preview Assets.xcassets in Resources */,
-				3281B4EC2D2F146E008A634E /* GoogleService-Info.plist in Resources */,
+				322E03372D542504007B84DC /* GoogleService-Info.plist in Resources */,
 				323278B42CE810F300833964 /* Assets.xcassets in Resources */,
 				3277F42A2D0035970090B251 /* joystix-monospace.otf in Resources */,
 			);
