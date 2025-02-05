@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3216243A2D48BF4E00294E80 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321624392D48BF4E00294E80 /* TabMenuView.swift */; };
 		3216243C2D496B2200294E80 /* GameIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216243B2D496B2200294E80 /* GameIconView.swift */; };
+		3219B6A72D5429D7006AAC63 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3219B6A62D5429D0006AAC63 /* test.plist */; };
 		32270D9C2D36DF890034FFFA /* LogWithGoogleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32270D9B2D36DF890034FFFA /* LogWithGoogleButtonView.swift */; };
 		32270D9E2D36E05A0034FFFA /* LogWithEmailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32270D9D2D36E05A0034FFFA /* LogWithEmailButtonView.swift */; };
 		322E032B2D50A232007B84DC /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 322E032A2D50A232007B84DC /* Shimmer */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		321624392D48BF4E00294E80 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		3216243B2D496B2200294E80 /* GameIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameIconView.swift; sourceTree = "<group>"; };
+		3219B6A62D5429D0006AAC63 /* test.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = test.plist; sourceTree = "<group>"; };
 		32270D9B2D36DF890034FFFA /* LogWithGoogleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWithGoogleButtonView.swift; sourceTree = "<group>"; };
 		32270D9D2D36E05A0034FFFA /* LogWithEmailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWithEmailButtonView.swift; sourceTree = "<group>"; };
 		322E032C2D50A345007B84DC /* ShimmerPodiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerPodiumView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		3281B4F22D2F1AA7008A634E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3219B6A62D5429D0006AAC63 /* test.plist */,
 				3281B4EE2D2F15F9008A634E /* Utilities.swift */,
 				32E11F022D405E0B00F76F5F /* MyErrors.swift */,
 				3281B4F52D2F1B25008A634E /* SignInGoogleHelper.swift */,
@@ -476,6 +479,7 @@
 				323278B32CE810F300833964 /* Preview Assets.xcassets in Resources */,
 				322E03372D542504007B84DC /* GoogleService-Info.plist in Resources */,
 				323278B42CE810F300833964 /* Assets.xcassets in Resources */,
+				3219B6A72D5429D7006AAC63 /* test.plist in Resources */,
 				3277F42A2D0035970090B251 /* joystix-monospace.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
