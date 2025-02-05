@@ -54,7 +54,7 @@ class TowerGameScene: SKScene, GameButtonDelegate{
             isGameOn = false
             Task {
                 do {
-                    try await AuthManager.shared.savePlayerScore(field: "runScore", score: Double(blocks.score))
+                    try await AuthManager.shared.savePlayerScore(field: "towerScore", score: Double(blocks.score))
                 }
                 catch {
                     towerVm?.alertText = error.localizedDescription
@@ -71,6 +71,7 @@ class TowerGameScene: SKScene, GameButtonDelegate{
     }
     
     func startGame() {
+        blocks.score = 0
         isGameOn = true
         blocks.checkForDropTouch()
         button.hideButton()

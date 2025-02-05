@@ -76,7 +76,6 @@ class BlocksManager: SKShapeNode{
     
     func restartBlocks() {
         lifes = 3
-        score = 0
         removeChildren(in: groundedBlocks)
         blocks.removeAll()
         groundedBlocks.removeAll()
