@@ -1,17 +1,22 @@
 # 4Games app
-👋 Hi, 
+👋 Hi!
 
-🎮 I would like to present you my new SwiftUI app with MVVM pattern. It's 4Games, app that consists of four interesting games, accounts system and leaderboard. All backend is handled by Firebase: Authentication, Storage and Firestore. I also used 2 other repositories:
+🎮 I’d like to show you my new SwiftUI app called 4Games. It’s built using the MVVM pattern and includes four fun and engaging mini-games, a user account system, and a global leaderboard so you can compete with others and track your progress.
 
-▫️ https://github.com/patrickbiel01/Maze-Generation -> to generate random mazes in Maze Solve.
+The backend is handled by Firebase services — including Authentication, Firestore, and Storage — and managed through a set of custom backend managers that take care of all communication and data handling behind the scenes.
 
-▫️ https://github.com/markiv/SwiftUI-Shimmer -> to improve user experience while loading the data.
+The app features a clean, simple, and modern UI that looks great and is easy to navigate, whether you're playing on an iPhone or iPad.
+
+As in all my projects, I’ve added robust error handling to make sure users are always informed if something goes wrong — for example, during sign-in or while syncing game data. System alerts help keep everything clear and user-friendly.
+
 
 🟥 Here is a link to the youtube video, that shows how the app looks like: https://youtube.com/shorts/0Da7F0Hz_Ec
 
 👉 All logos and banners are made by myself.
 
-👉 For icons, I used SF Symbols and a few of them are downloaded from https://www.onlinewebfonts.com
+👉 To generate random mazes in Maze Solve I used: https://github.com/patrickbiel01/Maze-Generation
+
+👉 To improve user experience while loading the data I used: https://github.com/markiv/SwiftUI-Shimmer
 
 🔥 Interesting features that are implemented into the app:
 
