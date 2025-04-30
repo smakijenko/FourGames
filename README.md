@@ -46,6 +46,6 @@
 
 ![ScreenRecording_02-05-202522-30-31_1-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/3313458f-95b9-479e-999c-8fe9179a2a18)
 
-▫️ Tower Build - last but not least, remake of my childhood game. Player has to build the tallest tower as possible, making only two mistakes. I implemented gravity into the game, so the feeling of falling block is real.
+▫️ Tower Build - last but not least, remake of my childhood game. Player has to build the tallest tower as possible, making only two mistakes. I implemented gravity into the game, which makes feeling of falling block real.
 
 ![ScreenRecording_02-05-202522-22-03_1-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f7ee4d21-052e-45b8-b58e-9f80f588cedf)
